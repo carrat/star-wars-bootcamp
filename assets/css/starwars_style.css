@@ -4,7 +4,7 @@
 
 
 html {
-	background-image: url(assets/images/xwing.jpg);
+	background-image: url(/assets/images/xwing.jpg);
 	background-size: cover;
 	min-height: 100%;
 }
