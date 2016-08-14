@@ -4,7 +4,8 @@
 
 
 html {
-	background-image: url(/assets/images/xwing.jpg);
+	/*background-image: url(http://assets2.ignimgs.com/2015/08/06/darth-vader-crossed-arms-1280jpg-88461e1280wjpg-67c0c2_1280w.jpg);*/
+	background-image: url(http://vignette4.wikia.nocookie.net/starwars/images/f/ff/X-wing_SWGTCG.jpg/revision/latest?cb=20090319165201);
 	background-size: cover;
 	min-height: 100%;
 }
@@ -12,16 +13,36 @@ html {
 
 body {
 	margin: 0px;
-	font-family: 'Arvo', Arial, sans-serif;
+	font-family: 'Poppins', Arial, sans-serif;
 	font-size: 15px;
-	margin-bottom: 100px;
+	margin-bottom: 70px;
+	
+}
+
+a {
+	color: #ffffff;
+
+}
+
+a:hover {
+	color: #d8931c;
+
 }
 
 #header-top {
 	width: 100%;
-	padding: 20px;
-	height: 50px;
-	background-color: rgba(30,30,30,0.75);
+	padding: 10px;
+    border-bottom: 1px solid #666666;
+    background: #000000;
+	opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+}
+
+#header-inner {
+	width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	padding-left: 20px;
 }
 
 #header-top p {
@@ -34,21 +55,41 @@ body {
 	margin-right: auto;
 	padding-left: 30px;
 	padding-right: 30px;
-	background-color: rgba(30,30,30,0.75);
+	height: 100%;
+}
+
+#main-content {
+	width: 960px;
+	padding: 30px;
+	background-color: rgba(0,0,0,0.75);
+	margin-left: auto;
+	margin-right: auto;
+	height: 630px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border: 1px solid #666666;
+
+
 }
 
 #footer {
-	background-color: #666666;
+	background-color: rgba(0,0,0,0.75);
 	width: 100%;
 	color: #FFFFFF;
 	font-size: 14px;
 	text-align: center;
-	padding: 40px;
-	border-top: 8px solid #FFFFFF;
-	height: 100px;
+	padding: 5px;
+	border-top: 1px solid #666666;
+	height: 70px;
 	position: fixed;
 	bottom: 0;
 	left: 0;
+
+}
+
+#footer p {
+	font-size: 12px;
+	color: #666666;
 
 
 }
