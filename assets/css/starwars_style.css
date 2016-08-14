@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+}
+
+
+* html {
+
+	background-image: url(assets/images/xwing.jpg);
+	background-size: cover;
+	min-height: 100%;
+	position: relative;
+
+}
+
+
+body {
+	margin: 0px;
+	font-family: 'Arvo', Arial, sans-serif;
+	font-size: 15px;
+	color: #000000;
+	margin-bottom: 100px;
+}
+
+#header-top {
+	width: 100%;
+	padding: 20px;
+	height: 50px;
+	background-color: rgba(30,30,30,0.75);
+}
+
+#header-top p {
+	color: #FFFFFF;
+
+}
+#container {
+	width: 980px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: rgba(30,30,30,0.75);
+}
+
+#footer {
+	background-color: #666666;
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: center;
+	padding: 40px;
+	border-top: 8px solid #FFFFFF;
+	height: 100px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+
+	
+}
