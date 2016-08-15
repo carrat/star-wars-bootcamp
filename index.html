@@ -3,21 +3,22 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Star Wars</title>
+	<!-- Add unique stylesheet -->
 	<link href="assets/css/starwars_style.css" rel="stylesheet" type="text/css">
+	<!-- Add Font Awesome -->
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-
 	<!-- Add Google Web Font -->
 	<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
 
-	<script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
-		
+	<script 
+	src="https://code.jquery.com/jquery-3.1.0.js"   
+	integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   
+	crossorigin="anonymous">	
 	</script>
-
-
+		
 	<script>
 
 	// set initial variables
-
 	var wins = 0; // track of how many fights the user has won
 	var losses = 0; // track the number of fights the user has lost
 	var hero =  ''; // track the character chosen as the hero
@@ -33,9 +34,10 @@
 	var instructionTitle = 'Choose your hero!'; // create placeholder fonr instruction title e.g. "Choose Your Hero"
 	var battleRecord = []; // create empty array which will eventually hold objects detailing completed battles
 	var enemies = []; // keep track of all of the enemies faced
-	var heroSelect = true;
-	var moveLineupNow = false;
-	var updateText = '';
+	var heroSelect = true; // is the user selecting the hero?
+	var moveLineupNow = false; // have both characters been selected and it is time to move the character selection lineup?
+	var updateText = ''; // set user update text
+
 
 	// Characters Array
 
@@ -114,19 +116,11 @@
 	    selected: false
 	  }
 
-
-	 // Write instructional text
-
-	 
-
 	</script>
-
 
 </head>
 
-
 <body>
-
 <!-- Start Display -->
 
 <!-- Display Header -->
@@ -134,56 +128,34 @@
 	<div id="header-inner">	
 		<div id="logo"><img src="assets/images/star-wars-logo.png" width="150px"></div>
 		<!-- Display instructions -->
-	<div id="instructions">
+		<div id="instructions">
 
-		<div id="instructionsContent">
+			<div id="instructionsContent">
 
-		<h1>How to Play</h1>
-			<ol>
-				<li>Select your hero and your first opponent</li>
-				<li><strong>Attack your opponent</strong> to reduce their Hit Points to 0 before they do the same to you</li>
-				<li><strong>Use the Force</strong> when your back is against the wall. Be careful though: you can only use it once!</li>
-				<li><strong>Defeat three enemies</strong> to win the game.</li>
-			</ol>
+			<h1>How to Play</h1>
+				<ol>
+					<li>Select your hero and your first opponent</li>
+					<li><strong>Attack your opponent</strong> to reduce their Hit Points to 0 before they do the same to you</li>
+					<li><strong>Use the Force</strong> when your back is against the wall. Be careful though: you can only use it once!</li>
+					<li><strong>Defeat three enemies</strong> to win the game.</li>
+				</ol>
+			</div>
 		</div>
-
-
-	<!--	<div id="instructionsControls">
-		<button name="closeInstructions" class="instructionsButton"><i class="fa  fa-close  white"></i></button>
-		</div> -->
-		
-	</div>
 	</div>
 </div>
 
 <!-- Render Container -->
 <div id="container">
 
-
-
-
 <!-- Display Supplemental information -->
-
-	<div id="supplemental">
-	
-	</div>
-
+	<div id="supplemental"></div>
 
 <!-- Display Main Content -->
 	<div id="main-content">
-
 		<div id="updates"></div>
-
 		<div id="battlefieldHolder"></div>
-
-		<div id="lineup">
-			
-		</div>
-
-		
-
-	</div>
-	
+		<div id="lineup"></div>
+	</div>	
 
 </div>
 
@@ -194,36 +166,46 @@
 	</p>
 </div>
 
-
 <script>
 
 // If page is ready
 $(document).ready(function(){
 
-	// Did the user attck?
-	$('.attack').on('click', attack);
+	
 
-	// Did the user use the force?
-	$('.force').on('click', useForce);
-
+	
+	// Write 'fade out' function to make character turn transparent after selection
+	function fadeOut() {
+			$(".character").animate({opacity: 0.20});
+	}
 
 	// Write 'attack' function
-	function attack() {
+	function attackEnemy() {
 
-		var attackStrength = (4 * 8);
-		var enemy = characters[defender].hp;
-		enemy = enemy-attackStrength;
+		attackStrength = (4 * 8);
+		
+		$(".defenderHP").animate({fontSize: "60px"}, "fast").animate({opacity: 0.50}, "fast");
+		$(".defenderHP").animate({opacity: 1.00}, "fast").animate({fontSize: "64px"}, "fast");
+		defenderHP = defenderHP-attackStrength;
+
+		if (defenderHP > 0) {
+		$(".defenderHP").text(defenderHP);
+
+		}
+
+		else if (defenderHP <= 0) {
+
+		defenderHP = 0;
+		$(".defenderHP").text(defenderHP);
+
+		}
+
 
 	}
 
 	// Write 'use the force' function
 	function useForce() {
 
-	}
-
-	// Write 'fade out' function to make character turn transparent after selection
-	function fadeOut() {
-			$(".character").animate({opacity: 0.20});
 	}
 
 	// choose hero
@@ -254,16 +236,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-						//console.log("created battlefield kenobi");
 					}
 
 					else if (heroSelect === true) {
@@ -284,6 +258,14 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+
 
 
 					}
@@ -320,17 +302,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-
-						console.log("created battlefield solo");
 					}
 
 					else if (heroSelect === true) {
@@ -349,6 +322,13 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
 					}
 				}
 			}
@@ -378,16 +358,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-						console.log("created battlefield chewbacca");
 					}
 
 					else if (heroSelect === true) {
@@ -406,6 +378,13 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
 					}
 				}
 			}
@@ -435,16 +414,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-						console.log("created battlefield leia");
 					}
 
 					else if (heroSelect === true) {
@@ -463,6 +434,13 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
 					}
 				}
 			}
@@ -492,16 +470,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-						console.log("created battlefield bobafett");
 					}
 
 					else if (heroSelect === true) {
@@ -520,6 +490,13 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
 					}
 				}
 			}
@@ -549,16 +526,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-						console.log("created battlefield rey");
 					}
 
 					else if (heroSelect === true) {
@@ -577,6 +546,13 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
 					}
 				}
 			}
@@ -606,18 +582,8 @@ $(document).ready(function(){
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
 
+	 					showEnemy();
 
-						if (moveLineupNow === false){
-							moveLineup();
-							moveLineupNow = true;
-						}
-
-						// Render battlefield
-
-						//createBattlefield();
-
-						
-						console.log("created battlefield greedo");
 					}
 
 					else if (heroSelect === true) {
@@ -636,13 +602,18 @@ $(document).ready(function(){
 						updateDiv.setAttribute('class', 'wit');
 	 					updateDiv.innerHTML = updateText;
 	 					$('#updates').html(updateDiv);
+
+	 					// Move Lineup
+
+	 					if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
 					}
 				}
 			}
 
 		});
-
-
 
 	}
 
@@ -690,11 +661,11 @@ $(document).ready(function(){
 
 	}
 
-	// Create battlefield
+	// create battlefield and render hero
 
 	function createBattlefield() {
 
-			if (hero !== '' && defender !== '') {
+			if (hero !== '') {
 
 				battlefieldDiv = document.createElement('div');
 
@@ -712,6 +683,7 @@ $(document).ready(function(){
 				$(hpLabel).text("HP");
 
 				charHP = document.createElement('h1');
+				$('charHP').attr('class', 'heroHP');
 				$(charHP).text(characters[hero].hp);
 
 				$(heroDiv).append(charName);
@@ -750,6 +722,22 @@ $(document).ready(function(){
 				vsLabel.innerHTML = "VS";
 				$(vsDiv).append(vsLabel);
 
+
+				$(battlefieldDiv).append(heroDiv);
+				$(battlefieldDiv).append(heroImgDiv);
+				$(battlefieldDiv).append(vsDiv);
+				
+				$('#battlefieldHolder').append(battlefieldDiv);
+			}
+
+	}
+
+	// Show Enemy
+
+	function showEnemy() {
+
+			if (defender !== '') {
+
 				// Create Defender Image
 
 				defenderImgDiv = document.createElement('div');
@@ -762,7 +750,6 @@ $(document).ready(function(){
 
 				defenderDiv = document.createElement('div');
 				$(defenderDiv).addClass('defender battle');
-
 				
 				defenderName = document.createElement('h3');
 				$(defenderName).text(characters[defender].name);
@@ -771,23 +758,24 @@ $(document).ready(function(){
 				$(hpLabel).text("HP");
 
 				defenderHP = document.createElement('h1');
+				$(defenderHP).attr('class', 'defenderHP');
 				$(defenderHP).text(characters[defender].hp);
 
 				$(defenderDiv).append(defenderName);
 				$(defenderDiv).append(hpLabel);
 				$(defenderDiv).append(defenderHP);
 
-				$(battlefieldDiv).append(heroDiv);
-				$(battlefieldDiv).append(heroImgDiv);
-				$(battlefieldDiv).append(vsDiv);
-				$(battlefieldDiv).append(defenderImgDiv);
-				$(battlefieldDiv).append(defenderDiv);
+				$('#battlefield').append(defenderImgDiv);
+				$('#battlefield').append(defenderDiv);
 
+				console.log("Defender = " + defender);
+				console.log("Defender HP = " + characters[defender].hp);
 
+				defenderHP = characters[defender].hp;
 
-				$('#battlefieldHolder').append(battlefieldDiv);
+				// Did the user attack?
+				$('.attack').on('click', attackEnemy);
 			}
-
 
 	}
 
@@ -798,31 +786,12 @@ $(document).ready(function(){
 			createBattlefield();
 		}).animate({top:"-=300px"}, "fast");
 
-		
-
 	}
 
-	// Render Hero
-	if ( hero !== '') {
+	
 
-		$('.hero').html();
 
-	}
 
-	// Render Defender
-	if ( defender !== '') {
-
-		
-	}
-
-	// Render wit/updates into message bar
-	if ( updateText !== '') {
-
-		$('.wit').html(updateText);
-
-	}
-
-		
 
 
 	// Render character lineup for choice
@@ -830,25 +799,14 @@ $(document).ready(function(){
 
 	// Did the user select a character?
 
-	$('.character').click(selectCharacter() );
+	 $('.character').click(selectCharacter() );
 
-	// Output starting instructional
+	// Did the user attack?
+	$('.attack').on('click', attackEnemy);
 
-	instructionalDiv = document.createElement('h1');
-	 instructionalDiv.innerHTML = instructionTitle;
-	 $('#supplemental').append(instructionalDiv);
+	// Did the user use the force?
 
-
-	 // Animate Instructions Div
-
-	 $('.instructionsButton').on('click', hideInstructions);
-
-	 function hideInstructions() {
-
-	 	$("#instructions").animate({opacity: '0.00'}).animate({height: '0px'}).animate({top:"-=500px"}, "normal");
-	 	
-	 	$("#instructions").html("");
-	 }
+	$('.attack').on('click', useForce);
 
 
 

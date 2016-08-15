@@ -1,0 +1,102 @@
+// Successful Create Battlefield
+
+// Create battlefield
+
+	function createBattlefield() {
+
+			if (hero !== '' && defender !== '') {
+
+				battlefieldDiv = document.createElement('div');
+
+				$(battlefieldDiv).attr("id","battlefield");
+				// Create Hero Rendering
+
+				heroDiv = document.createElement('div');
+				$(heroDiv).addClass('hero battle');
+
+				
+				charName = document.createElement('h3');
+				$(charName).text(characters[hero].name);
+
+				hpLabel = document.createElement('h2');
+				$(hpLabel).text("HP");
+
+				charHP = document.createElement('h1');
+				$(charHP).text(characters[hero].hp);
+
+				$(heroDiv).append(charName);
+				$(heroDiv).append(hpLabel);
+				$(heroDiv).append(charHP);
+
+				// Create Hero Image
+
+				heroImgDiv = document.createElement('div');
+				$(heroImgDiv).attr('class', 'character');
+				heroImg = document.createElement('IMG');
+				$(heroImg).attr('src', characters[hero].image);
+				$(heroImgDiv).append(heroImg);
+				
+
+				// Create Action Bottons
+
+				buttonsDiv = document.createElement('div');
+				$(buttonsDiv).attr('class', 'buttons');
+				attackButton = document.createElement('button');
+				$(attackButton).addClass('attack');
+				attackButton.innerHTML = "Attack!";
+				forceButton = document.createElement('button');
+				$(forceButton).addClass('force');
+				forceButton.innerHTML = "Use the Force!";
+				$(buttonsDiv).append(attackButton);
+				$(buttonsDiv).append(forceButton);
+
+				$(heroDiv).append(buttonsDiv);
+
+				// Create VS Block
+
+				vsDiv = document.createElement('div');
+				$(vsDiv).addClass('vs');
+				vsLabel = document.createElement('h4');
+				vsLabel.innerHTML = "VS";
+				$(vsDiv).append(vsLabel);
+
+				// Create Defender Image
+
+				defenderImgDiv = document.createElement('div');
+				$(defenderImgDiv).attr('class', 'character');
+				defenderImg = document.createElement('IMG');
+				$(defenderImg).attr('src', characters[defender].image);
+				$(defenderImgDiv).append(defenderImg);
+
+				// Create Defender Rendering
+
+				defenderDiv = document.createElement('div');
+				$(defenderDiv).addClass('defender battle');
+
+				
+				defenderName = document.createElement('h3');
+				$(defenderName).text(characters[defender].name);
+
+				hpLabel = document.createElement('h2');
+				$(hpLabel).text("HP");
+
+				defenderHP = document.createElement('h1');
+				$(defenderHP).text(characters[defender].hp);
+
+				$(defenderDiv).append(defenderName);
+				$(defenderDiv).append(hpLabel);
+				$(defenderDiv).append(defenderHP);
+
+				$(battlefieldDiv).append(heroDiv);
+				$(battlefieldDiv).append(heroImgDiv);
+				$(battlefieldDiv).append(vsDiv);
+				$(battlefieldDiv).append(defenderImgDiv);
+				$(battlefieldDiv).append(defenderDiv);
+
+
+
+				$('#battlefieldHolder').append(battlefieldDiv);
+			}
+
+
+	}

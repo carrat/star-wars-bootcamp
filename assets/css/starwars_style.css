@@ -163,6 +163,7 @@ a:hover {
 	padding: 10px;
 	border: 1px solid #666666;
 	text-align: center;
+	position: relative;
 	margin-bottom: 20px;
 
 }
@@ -182,6 +183,8 @@ a:hover {
 #lineup {
 	height: 500px;
 	position: relative;
+    left: 0px;
+    bottom: 000px;
 	border: 1px;
 
 
@@ -207,6 +210,11 @@ a:hover {
 .faded {
 	opacity: 0.2;
     filter: alpha(opacity=20); /* For IE8 and earlier */
+
+
+}
+
+#battfieldHolder {
 
 
 }
@@ -280,7 +288,7 @@ a:hover {
 	padding: 0px;
 	vertical-align: top;
 	text-align: center;
-	width: 200px;
+	width: 250px;
 
 
 }
