@@ -45,6 +45,15 @@ a:hover {
 	padding-left: 20px;
 }
 
+#logo {
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 20px;
+
+
+
+}
+
 #header-top p {
 	color: #FFFFFF;
 
@@ -55,22 +64,316 @@ a:hover {
 	margin-right: auto;
 	padding-left: 30px;
 	padding-right: 30px;
-	height: 100%;
+	padding-top: 0px;
+	padding-bottom: 20px;
+	background-color: rgba(0,0,0,0.75);
 }
 
 #main-content {
-	width: 960px;
-	padding: 30px;
-	background-color: rgba(0,0,0,0.75);
-	margin-left: auto;
-	margin-right: auto;
-	height: 630px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	border: 1px solid #666666;
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	/*background-color: rgba(0,0,0,0.75);*/
+	margin-top: 0px;
+	margin-bottom: 20px;
+	border: 0px solid #666666;
+	height: 1000px;
 
 
 }
+
+#secondary {
+	width: 960px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 5px;
+	background-color: rgba(0,0,0,0.75);
+	margin-left: auto;
+	margin-right: auto;
+
+
+}
+
+#instructions {
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	background-color: rgba(0,0,0,0.75);
+	display: inline-block;
+	position: relative;
+}
+
+#instructions h1{
+	font-size: 16px;
+	color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+#instructions ol {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0px;
+
+}
+
+#instructions ol li {
+	font-size: 12px;
+	color: #d8931c;
+	margin: 0px;
+	padding: 0px;
+	list-style-position: outside;
+}
+
+#instructionsContent {
+	display: inline-block;
+}
+
+#instructionsControls {
+	display: inline-block;
+	text-align: right;
+	width: 5%;
+	vertical-align: top;
+}
+
+#supplemental {
+	padding-left: 0px;
+	padding-right: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	/*background-color: rgba(0,0,0,0.75);*/
+}
+
+#supplemental h1{
+	font-size: 22px;
+	color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+#updates {
+
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #666666;
+	text-align: center;
+	margin-bottom: 20px;
+
+}
+
+#updates h1 {
+	font-size: 16px;
+	font-weight: 400;
+	color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+	font-style: italic;
+
+
+
+}
+
+#lineup {
+	height: 500px;
+	position: relative;
+	border: 1px;
+
+
+}
+
+.lineup {
+	padding: 10px;
+	border: 1px solid #666666;
+	text-align: center;
+	margin-bottom: 20px;
+
+
+}
+
+.lineup h4 {
+	font-size: 48px;
+	font-style: normal;
+	color: #d8931c;
+
+
+}
+
+.faded {
+	opacity: 0.2;
+    filter: alpha(opacity=20); /* For IE8 and earlier */
+
+
+}
+
+#battlefield {
+	padding: 20px;
+	border: 1px solid #666666;
+	text-align: center;
+	margin-bottom: 20px;
+
+
+}
+
+.character {
+	display: inline-block;
+
+
+}
+
+.character h2 {
+	font-size: 14px;
+	font-style: normal;
+	color: #ffffff;
+	text-align: center;
+	font-weight: 300;
+	margin: 0px;
+	padding: 0px;
+}
+
+.character h3 {
+	font-size: 16px;
+	font-style: normal;
+	color: #d8931c;
+	text-align: center;
+	font-weight: 400;
+	margin: 0px;
+	padding: 0px;
+}
+
+.vs {
+	display: inline-block;
+	margin: 0px;
+	padding: 0px;
+	vertical-align: top;
+	text-align: center;
+
+}
+
+.vs h4 {
+	font-size: 64px;
+	font-style: normal;
+	color: #d8931c;
+	text-align: center;
+	font-weight: 600;
+	margin-top: 40px;
+	padding: 0px;
+	margin-right: 5px;
+	margin-left: 5px;
+
+
+
+}
+
+
+
+
+.battle {
+	display: inline-block;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding: 0px;
+	vertical-align: top;
+	text-align: center;
+	width: 200px;
+
+
+}
+.battle h1{
+	font-size: 64px;
+	font-style: normal;
+	color: #ffffff;
+	text-align: center;
+	font-weight: 600;
+	margin-top: -20px;
+	margin-bottom: 0px;
+	padding: 0px;
+
+}
+
+.battle h2{
+	font-size: 22px;
+	font-style: normal;
+	color: #d8931c;
+	text-align: center;
+	font-weight: 400;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+.battle h3{
+	font-size: 30px;
+	font-style: normal;
+	color: #ffffff;
+	text-align: center;
+	font-weight: 400;
+	margin: 0px;
+	padding: 0px;
+
+}
+
+button.attack {
+	background: #a11212;
+	font-size: 14px;
+	font-style: normal;
+	color: #ffffff;
+	text-align: center;
+	font-weight: 600;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	margin-right: 10px;
+	padding: 6px;
+	border: 0px;
+}
+
+button.attack:hover {
+	background: #db5115;
+}
+button.attack:active {
+	background: #730808;
+}
+
+button.force {
+	background: #2d722d;
+	font-size: 14px;
+	font-style: normal;
+	color: #ffffff;
+	text-align: center;
+	font-weight: 600;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	padding: 6px;
+	border: 0px;
+}
+
+button.force:hover {
+	background: #2554c0;
+}
+
+button.force:active {
+	background: #24243f;
+}
+
+
+.buttons {
+	width: 200px;
+}
+
+
+
+
+.character img {
+	height: 250px;
+
+
+}
+
 
 #footer {
 	background-color: rgba(0,0,0,0.75);

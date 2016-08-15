@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Star Wars</title>
+	<link href="assets/css/starwars_style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+	<!-- Add Google Web Font -->
+	<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
+
+	<script   src="https://code.jquery.com/jquery-3.1.0.js"   integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk="   crossorigin="anonymous"></script>
+		
+	</script>
+
+
+	<script>
+
+	// set initial variables
+
+	var wins = 0; // track of how many fights the user has won
+	var losses = 0; // track the number of fights the user has lost
+	var hero =  ''; // track the character chosen as the hero
+	var defender =  ''; // track the character chosen as the active enemy
+	var heroHP = 0; // track the number of HP the hero has remaining
+	var defenderHP = 0; // track the number of HP the defender has remaining
+	var totalVictory = 0; // track whether user acheives total victory
+	var forceUse = 0; // track whether the user has already used the force
+	var totalDefeat = 0; // track whether the user achieves total defeat
+	var updateText = ''; // track the update text for the message bar
+	var attackPower = 0; // track the power of the attack
+	var lineupDiv = 'test'; // create placeholder for lineup divs
+	var instructionTitle = ''; // create placeholder fonr instruction title e.g. "Choose Your Hero"
+	var battleRecord = []; // create empty array which will eventually hold objects detailing completed battles
+	var enemies = []; // keep track of all of the enemies faced
+	var heroSelect = true;
+	var moveLineupNow = false;
+
+	// Characters Array
+
+	var characters = [
+	  {
+	    name: "Obi-Wan Kenobi",
+	    image: "assets/images/characters/kenobi.png", 
+	    hp: 190,
+	    motto: "",
+	    class: "kenobi",
+	    selected: false
+	  },
+
+	  {
+	    name: "Han Solo",
+	    image: "assets/images/characters/solo.png", 
+	    hp: 160,
+	    motto: "Who's scruffy-looking?",
+	    class: "solo",
+	    selected: false
+	  },
+
+	  {
+	    name: "Chewbacca",
+	    image: "assets/images/characters/chewbacca.png", 
+	    hp: 180,
+	    motto: "Raaahrrhh!",
+	    class: "chewbacca",
+	    selected: false
+	  },
+
+	  {
+	    name: "Princess Leia",
+	    image: "assets/images/characters/leia.png", 
+	    hp: 150,
+	    motto: "",
+	    class: "leia",
+	    selected: false
+	  },
+
+	  {
+	    name: "Boba Fett",
+	    image: "assets/images/characters/bobafett.png", 
+	    hp: 170,
+	    motto: "You're worth a lot of money to me.",
+	    class: "bobafett",
+	    selected: false
+	  },
+
+	  {
+	    name: "Rey",
+	    image: "assets/images/characters/rey.png", 
+	    hp: 140,
+	    motto: "",
+	    class: "rey",
+	    selected: false
+	  },
+
+	  {
+	    name: "Greedo",
+	    image: "assets/images/characters/greedo.png", 
+	    hp: 150,
+	    motto: "",
+	    class: "greedo",
+	    selected: false
+	  }
+	]
+
+	// Create Darth Vader
+	var specialCharacter =  {
+	    name: "Darth Vader",
+	    image: "assets/images/characters/vader.png", 
+	    hp: 200,
+	    motto: "You can not possibly understand the power of the Dark Side.",
+	    class: "vader",
+	    selected: false
+	  }
+
+	</script>
+
+
+</head>
+
+
+<body>
+
+<!-- Start Display -->
+
+<!-- Display Header -->
+<div id ="header-top">
+	<div id="header-inner">	
+		<div id="logo"><img src="assets/images/star-wars-logo.png" width="150px"></div>
+	</div>
+</div>
+
+<!-- Render Container -->
+<div id="container">
+
+
+<!-- Display instructions -->
+	<div id="instructions">
+		<h1>How to Play</h1>
+		<ol>
+			<li>Select character you want to be</li>
+			<li>Select character you want to challenge</li>
+			<li><strong>Attack your opponent</strong> to reduce their Hit Points to 0 before they do the same to you</li>
+			<li><strong>Use the Force</strong> when your back is against the wall. Be careful though: you can only use it once!</li>
+			<li><strong>Defeat three enemies</strong> to win the game.</li>
+		</ol>
+	</div>
+
+<!-- Display Supplemental information -->
+
+	<div id="supplemental">
+	<h1>Choose your hero!</h1>
+	</div>
+
+
+<!-- Display Main Content -->
+	<div id="main-content">
+
+		<div id="updates"><h1 class="wit">Bring it on, scoundrel! You're worth a lot of money to me.</div>
+
+		<!-- <div id="battlefield">
+			
+			<div class="hero battle">
+				<h3>Han Solo</h3><h2>HP</h2><h1>160</h1>
+					<div id="actionButtons">
+						<button class="attack">Attack!</button>
+						<button class="force">Use the Force!</button>
+					</div>
+			</div>
+
+			<div class="character solo"><img src="assets/images/characters/solo.png" alt="Solo" > </div>
+
+			<div class="vs"><h4>VS.</h4></div>
+
+			<div class="character bobafett"><img src="assets/images/characters/bobafett.png" alt="Boba Fett"></div>
+
+			<div class="enemy battle"><h3>Boba Fett</h3><h2>HP</h2><h1>160</h1></div>
+			
+		</div>-->
+
+
+		<div id="lineup">
+			
+		</div>
+
+		
+
+	</div>
+	
+
+</div>
+
+<!-- Display Footer -->
+<div id="footer">
+	<p>&copy; 2016  <strong><a href="https://www.linkedin.com/in/ideabrothers">Andrew Carr</a></strong><br>
+	Demo project for <a href="https://www.codingbootcamputaustin.com/">The Coding Boot Camp</a>  at UT Austin Center for Professional Education
+	</p>
+</div>
+
+
+<script>
+
+// If page is ready
+$(document).ready(function(){
+
+	// Did the user attck?
+	$('.attack').on('click', attack);
+
+	// Did the user use the force?
+	$('.force').on('click', useForce);
+
+
+	// Write 'attack' function
+	function attack() {
+
+	}
+
+	// Write 'use the force' function
+	function useForce() {
+
+	}
+
+	// Write 'fade out' function to make character turn transparent after selection
+	function fadeOut() {
+			$(".character").animate({opacity: 0.20});
+	}
+
+	// choose hero
+	function selectCharacter() {
+
+		$('.kenobi').click(function() {
+
+			$(".kenobi").animate({opacity: 0.20});
+
+			for (i=0; i < characters.length; i++) {
+				
+				if (characters[i].class == 'kenobi') {
+
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+
+
+				}
+			}
+			
+
+		});
+
+		$('.solo').click(function() {
+
+			$(".solo").animate({opacity: 0.20});
+
+			for (i=0; i < characters.length; i++) {
+
+
+				if (characters[i].class == 'solo') {
+					
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+				}
+			}
+
+		});
+
+		$('.chewbacca').click(function() {
+
+			$(".chewbacca").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+				if (characters[i].class == 'chewbacca') {
+					
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+				}
+			}
+
+		});
+
+		$('.leia').click(function() {
+
+			$(".leia").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+				if (characters[i].class == 'leia') {
+				
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+				}
+			}
+
+		});
+
+		$('.bobafett').click(function() {
+
+			$(".bobafett").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+				if (characters[i].class == 'bobafett') {
+					
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+				}
+			}
+
+		});
+
+		$('.rey').click(function() {
+
+			$(".rey").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+				if (characters[i].class == 'rey') {
+					
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+				}
+			}
+
+		});
+
+		$('.greedo').click(function() {
+
+			$(".greedo").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+				if (characters[i].class == 'greedo') {
+					
+					if (heroSelect === false && hero !== i)  {
+						defender = i;
+						console.log('defender = ' + defender);
+						if (moveLineupNow === false){
+							moveLineup();
+							moveLineupNow = true;
+						}
+					}
+
+					else if (heroSelect === true) {
+						hero = i;			
+						console.log('hero = ' + hero);
+						heroSelect = false;
+					}
+				}
+			}
+
+		});
+
+
+
+	}
+
+	// Create initial lineup
+
+	function createLineup() {
+
+		lineupDiv = document.createElement('div');
+		$(lineupDiv).addClass('lineup');
+
+		for (i=0; i < characters.length; i++) {
+
+			charDiv = document.createElement('div');
+			$(charDiv).addClass('character');
+			$(charDiv).addClass(characters[i].class);
+
+				if (characters[i].selected == true) {
+
+					$(charDiv).addClass('faded');
+
+				}
+
+			charImg = document.createElement('IMG');
+			charImg.setAttribute('src', characters[i].image);
+			charImg.setAttribute('class', characters[i].class);
+			charName = document.createElement('h2');
+			$(charName).text(characters[i].name);
+			charHP = document.createElement('h3');
+			$(charHP).text(characters[i].hp + " HP");
+
+			// fill the character div
+			$(charDiv).append(charImg);
+			$(charDiv).append(charName);
+			$(charDiv).append(charHP);
+		
+			console.log(charDiv);
+
+			$(lineupDiv).append(charDiv);
+
+		}
+
+		$('#lineup').append(lineupDiv);
+
+		console.log(lineupDiv);
+
+	}
+
+	// Create battlefield
+
+	function createBattlefield() {
+
+			battlefieldDiv = document.createElement('div');
+			$(battlefieldDiv).addClass('battlefield');
+
+			// Create Hero Rendering
+
+			heroDiv = document.createElement('div');
+			$(charDiv).addClass('hero battle');
+
+			
+			charName = document.createElement('h3');
+			$(charName).text(characters[hero].name);
+
+			hpLabel = document.createElement('h2');
+
+			charHP = document.createElement('h1');
+			$(charHP).text(characters[hero].hp);
+
+			$(heroDiv).append(charName);
+			$(heroDiv).append(hpLabel);
+			$(heroDiv).append(charHP);
+
+			// Create Hero Image
+
+			heroImgDiv = document.createElement('div');
+			heroImgDiv.setAttribute('class', 'character');
+			heroImg = document.createElement('IMG');
+			heroImg.setAttribute('src', characters[hero].image);
+			$(heroImgDiv).append(heroImg);
+			
+
+			// Create Action Bottons
+
+			buttonsDiv = document.createElement('div');
+			attackButton = dcoument.createElement('button');
+			$(attackButton).addClass('attack');
+			attackButton.innerHTML = "Attack!";
+			forceButton = document.createElement('button');
+			$(forceButton).addClass('force');
+			forceButton.innerHTML = "Use the Force!";
+			$(buttonsDiv).append(attackButton);
+			$(buttonsDiv).append(forceButton);
+
+			// Create VS Block
+
+			vsDiv = document.createElement('div');
+			$(vsDiv).addClass('vs');
+			vsLabel = document.createElement('h4');
+			vsLabel.innerHTML = "VS.";
+			$(vsDiv).append(vsLabel);
+
+			// Create Defender Image
+
+			defenderImgDiv = document.createElement('div');
+			defenderImgDiv.setAttribute('class', 'character');
+			defenderImg = document.createElement('IMG');
+			defenderImg.setAttribute('src', characters[defender].image);
+			$(defenderImgDiv).append(defenderImg);
+
+			// Create Defender Rendering
+
+			defenderDiv = document.createElement('div');
+			$(defenderDiv).addClass('defender battle');
+
+			
+			defenderName = document.createElement('h3');
+			$(defenderName).text(characters[defender].name);
+
+			hpLabel = document.createElement('h2');
+
+			defenderHP = document.createElement('h1');
+			$(defenderHP).text(characters[defender].hp);
+
+			$(defenderDiv).append(defenderName);
+			$(defenderDiv).append(hpLabel);
+			$(defenderDiv).append(defenderHP);
+
+			$(battlefieldDiv).append(heroDiv);
+			$(battlefieldDiv).append(heroImgDiv);
+			$(battlefieldDiv).append(buttonsDiv);
+			$(battlefieldDiv).append(vsDiv);
+			$(battlefieldDiv).append(defenderImgDiv);
+			$(battlefieldDiv).append(defenderDiv);
+
+			$('#battlefield').append(battlefieldDiv);
+
+
+	}
+
+	function moveLineup() {
+
+		$("#lineup").animate({top:"+=400px"}, "normal");
+	}
+
+	// Render Hero
+	if ( hero !== '') {
+
+		$('.hero').html();
+
+	}
+
+	// Render Defender
+	if ( defender !== '') {
+
+		
+	}
+
+	// Render wit/updates into message bar
+	if ( updateText !== '') {
+
+		$('.wit').html(updateText);
+
+	}
+
+	// Render character lineup for choice
+		createLineup();
+
+
+
+	// Did the user select a character?
+
+	$('.character').click(selectCharacter() );
+
+
+
+
+
+
+
+
+
+
+
+});
+</script>
+
+</body>
+</html>
