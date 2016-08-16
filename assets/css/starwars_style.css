@@ -111,6 +111,31 @@ a:hover {
 
 }
 
+.faceVaderClass {
+	background-color: rgba(220,0,0,0.65);
+	font-size: 18px;
+	font-weight: 600;
+	color: #FFFFFF;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	display: block;
+	border: 0px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	display: block;
+	margin-right: auto;
+    margin-left: auto;
+
+}
+
+.playOn {
+	width: 100%;
+	text-align: center;
+}
+
+
 
 
 
@@ -307,6 +332,7 @@ a:hover {
 	font-style: italic;
 	color: red;
 	font-size: 28px;
+	text-align: center;
 
 }
 
@@ -442,6 +468,16 @@ button.action:hover {
 
 button.action:active {
 	background: #24243f;
+}
+
+button.faceVaderClass:hover {
+	background: #d97b00;
+
+
+}
+button.faceVaderClass:active {
+	background: #000000;
+	
 }
 
 

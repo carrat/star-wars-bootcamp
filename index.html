@@ -26,8 +26,10 @@
 	var defenderHP = 0; // track the number of HP the defender has remaining
 	var totalVictory = 0; // track whether user acheives total victory
 	var forceUse = 0; // track whether the user has already used the force
+	var forceOn = false; // track whether the force is in use
 	var updateText = ''; // track the update text for the message bar
 	var attackStrength = 0; // track the power of the attack
+	var retaliationStrength = 0; // track the power of the retaliation
 	var instructionTitle = 'Choose your hero!'; // create placeholder fonr instruction title e.g. "Choose Your Hero"
 	var battleRecord = []; // create empty array which will eventually hold objects detailing completed battles
 	var enemies = []; // keep track of all of the enemies faced
@@ -38,8 +40,8 @@
 	var usedCharacters = []; // Keep track of all characters used including hero
 	var winner = -1;
 	var loser = -1;
-	var cheat = false; // If set to true, it makes it much easier to win so you can see what happens on victory
-	var vader = false; // If set to true, game will load final combat against Vader
+	var cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
+	var vader = 0; // If set to true, game will load final combat against Vader
 
 
 	// Characters Array
@@ -279,37 +281,44 @@ $(document).ready(function(){
 
 	// Event Handlers
 	$('.replay-game').on('click', resetGame);
-	$('.cheat').on('click', cheat);
+	$('.cheat').on('click', cheatOn);
 	$('.vader').on('click', vader);
-
 
 	//Display Cue
 	instructionalDiv = document.createElement('h1');
 	instructionalDiv.innerHTML = instructionTitle;
 	$('#supplemental').html(instructionalDiv);
 
-
 	function resetGame() {
 
 	}
 
-	function cheat() {
-
-		cheat = true;
-
+	function cheatOn() {
+		cheat = 1;
 	}
+
+	// Enter the Vader
 
 	function vader() {
 		vader = true;
 		$('html').css({'background-image': 'url(assets/images/bg/vader3.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
+
+		$('#lineup').empty();
+		$('#updateHolder').empty();
+	}
+
+	// Fight Darth Vader
+
+	function faceVader() {
+		
 	}
 
 
 
-	// Start next match n Battle
 
+	// Start next match n Battle
 	function restartBattle() {
 
 		// Reset the Hero's Hit Point total
@@ -318,7 +327,6 @@ $(document).ready(function(){
 		// Reset the defender so the user can select another opponent
 		defender = -1;
 
-// Maybe here all we have to do is empty the Battlefield div??
 		$('#battlefieldHolder').empty();
 
 		// Change instructional Text 
@@ -333,24 +341,91 @@ $(document).ready(function(){
 		showEnemy();
 
 	}
+
+	// Calculate Attack
+
+	function calculateAttack() {
+
+		// Determine random strength of blow
+			if (cheat == 0) {
+			attackStrength = Math.floor(Math.random() * (40-1)) + 4; 
+			console.log("Attack Strength = " + attackStrength);
+			}
+
+			else {
+			attackStrength = 40;
+			}
+
+			attackEnemy();
+	}
+
+
+	// Calculate Attack using the Force
+
+	function useForce() {
+
+		// Determine random strength of blow
+			if (cheat == 0) {
+			attackStrength = Math.floor(Math.random() * (70-1)) + 30; 
+			console.log("Attack Strength = " + attackStrength);
+			}
+
+			else {
+			attackStrength = 80;
+			}
+
+			forceUse = 1;
+			forceOn = true;
+
+			// Create Action Buttons without Force button
+			$('.buttons').empty();
+
+			buttonsDiv = document.createElement('div');
+			$(buttonsDiv).attr('class', 'buttons');
+			attackButton = document.createElement('button');
+			$(attackButton).addClass('attack');
+			attackButton.innerHTML = "Attack!";
+			$(buttonsDiv).append(attackButton);
+
+			$('.buttons').html(buttonsDiv);
+
+			// Did the user attack?
+			$('.attack').on('click', calculateAttack);
+
+			attackEnemy();
+	}
+
+	// Calculate Retaliation Strength
+
+	function calculateRetaliation() {
+
+			// Determine random strength of blow
+			if (cheat == 0) {
+			retaliationStrength = Math.floor(Math.random() * (40-1)) + 4; 
+			console.log("Retaliation Strength = " + retaliationStrength);
+			}
+
+			else {
+			retaliationStrength = 20;
+			}
+	}
 	
 	// Write Retaliation
 
-	function retaliation () {
+	function retaliation() {
 
 		if (heroHP > 0) {
 
-			// Determine random strength of blow
-
-
-			attackStrength = (4 * 8);
-			$('.heroDamage').html(attackStrength);
+			calculateRetaliation();
+			$('.heroDamage').html(retaliationStrength);
 		}
 
 		// Hero is dead
 		else if (heroHP <= 0) {
-			attackStrength = '';
-			$('.heroDamage').html(attackStrength);
+
+			heroHP = 0;
+			retaliationStrength = '';
+			$('.heroDamage').html(retaliationStrength);
 
 			updateText = characters[defender].name + " is the winner!";
 			updateDiv = document.createElement('div');
@@ -363,7 +438,6 @@ $(document).ready(function(){
 			loser = hero;
 			losses++;
 
-
 			showWinner()
 		}
 
@@ -372,10 +446,41 @@ $(document).ready(function(){
 		// Hero is still alive, but injured. Show injury
 		if (heroHP > 0) {
 
+			heroHP = heroHP-retaliationStrength;
+
+			if (heroHP <= 0) {
+				heroHP = 0;
+
+				$(".heroHP").text(heroHP);
+				defenderVictory = 1;
+				// write a function for Hero Victory to run here
+				losses++;
+
+				// Change Update Text
+				updateText = characters[defender].name + " is the winner!";
+				updateDiv = document.createElement('div');
+				updateDiv.setAttribute('class', 'wit');
+				updateDiv.setAttribute('id', 'updates');
+				updateDiv.innerHTML = updateText;
+				$('#updateHolder').html(updateDiv);
+
+				// Empty out the defeated opponent's information
+				$('.heroImage').empty();
+				$('.hero').empty();
+	
+				// Record hero's victory in Battle Record
+				battleRecord.push(defender);	
+
+				// Record winner and loser
+				winner = defender;
+				loser = hero;
+
+				showWinner()
+			}
+
 			$(".heroHP").animate({fontSize: "60px"}, "fast").animate({opacity: 0.50}, "fast");
 			$(".heroDamage").animate({opacity: 1.00}, "normal").animate({fontSize: "20px"}, "fast").animate({opacity: 0.00}, "normal");
 			$(".heroHP").animate({opacity: 1.00}, "fast").animate({fontSize: "64px"}, "fast");
-			heroHP = heroHP-attackStrength;
 			$(".heroHP").text(heroHP);
 		}
 
@@ -404,13 +509,14 @@ $(document).ready(function(){
 
 	// Write 'attack' function
 	function attackEnemy() {
+		console.log(cheat);
 
 		// Determine the strength of the attack
 		if (defenderHP > 0) {
 			// Determine random strength of blow
 
-			attackStrength = (4 * 8);
 			$('.damage').html(attackStrength);
+
 		}
 
 		// No attack possible because the defender is dead
@@ -503,10 +609,6 @@ $(document).ready(function(){
 
 	}
 
-	// Write 'use the force' function
-	function useForce() {
-
-	}
 	
 	// choose characters
 	function selectCharacter() {
@@ -779,10 +881,10 @@ $(document).ready(function(){
 			defenderHP = characters[defender].hp;
 
 			// Did the user attack?
-			$('.attack').on('click', attackEnemy);
+			$('.attack').on('click', calculateAttack);
 
 			// Did the user use the force?
-			$('.attack').on('click', useForce);
+			$('.force').on('click', useForce);
 		}
 
 	}
@@ -813,13 +915,13 @@ $(document).ready(function(){
 			// Change instructional Text 
 
 			instructionalDiv = document.createElement('h1');
-			heroDiv = document.createElement('span');
-			heroDiv.setAttribute('class', 'white');
+			winningDiv = document.createElement('span');
+			winningDiv.setAttribute('class', 'white');
 			loserDiv = document.createElement('span');
 			loserDiv.setAttribute('class', 'white');
-			$(heroDiv).text(characters[hero].name);
+			$(winningDiv).text(characters[winner].name);
 			$(loserDiv).text(characters[loser].name);
-			$(instructionalDiv).html(heroDiv);
+			$(instructionalDiv).html(winningDiv);
 			$(instructionalDiv).append(" defeated ");
 			$(instructionalDiv).append(loserDiv);
 			$('#supplemental').html(instructionalDiv);
@@ -835,7 +937,16 @@ $(document).ready(function(){
 
 			else if (losses == 0 && wins ==3) {
 				$(playAgainDiv).attr('class', 'vaderText');
-				$(playAgainDiv).html("The Force is strong in this one. Prepare to DIE!")
+				$(playAgainDiv).html("The Force is strong with this one. Prepare to DIE!")
+
+				playOnDiv = document.createElement('div');
+				$(playOnDiv).attr('class', 'playOn');
+				faceVaderButton = document.createElement('button');
+				$(faceVaderButton).addClass('faceVaderClass');
+				faceVaderButton.innerHTML = "Face Vader";
+				$(playOnDiv).append(faceVaderButton);
+
+				vader();
 			}
 
 			else if (losses == 0 && totalVictory == 1) {
@@ -851,6 +962,7 @@ $(document).ready(function(){
 			$('#battlefield').append(winnerDiv);
 			$('#battlefield').append(winnerImgDiv);
 			$('#battlefield').append(playAgainDiv);
+			$('#battlefield').append(playOnDiv);
 			
 			console.log("Wins: " + wins);
 		}
