@@ -1,0 +1,411 @@
+// choose hero
+	function selectCharacter() {
+
+		if (hero < 0 || defender < 0) {
+
+			$('.kenobi').click(function() {
+
+				$(".kenobi").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+					
+					if (characters[i].class == 'kenobi') {
+
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+
+							// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+
+
+
+						}
+
+
+					}
+				}
+				
+
+			});
+
+			$('.solo').click(function() {
+
+				$(".solo").animate({opacity: 0.20});
+
+				for (i=0; i < characters.length; i++) {
+
+
+					if (characters[i].class == 'solo') {
+						
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+							// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+						}
+					}
+				}
+
+			});
+
+			$('.chewbacca').click(function() {
+
+				$(".chewbacca").animate({opacity: 0.20});
+
+					for (i=0; i < characters.length; i++) {
+					if (characters[i].class == 'chewbacca') {
+						
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+						// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+						}
+					}
+				}
+
+			});
+
+			$('.leia').click(function() {
+
+				$(".leia").animate({opacity: 0.20});
+
+					for (i=0; i < characters.length; i++) {
+					if (characters[i].class == 'leia') {
+					
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+							// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+						}
+					}
+				}
+
+			});
+
+			$('.bobafett').click(function() {
+
+				$(".bobafett").animate({opacity: 0.20});
+
+					for (i=0; i < characters.length; i++) {
+					if (characters[i].class == 'bobafett') {
+						
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+							// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+						}
+					}
+				}
+
+			});
+
+			$('.rey').click(function() {
+
+				$(".rey").animate({opacity: 0.20});
+
+					for (i=0; i < characters.length; i++) {
+					if (characters[i].class == 'rey') {
+						
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+							// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+						}
+					}
+				}
+
+			});
+
+			$('.greedo').click(function() {
+
+				$(".greedo").animate({opacity: 0.20});
+
+					for (i=0; i < characters.length; i++) {
+					if (characters[i].class == 'greedo') {
+						
+						if (heroSelect === false && hero !== i)  {
+							defender = i;
+							console.log('defender = ' + defender);
+							// Change instructional Text 
+							instructionTitle = "Fight!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					showEnemy();
+
+						}
+
+						else if (heroSelect === true) {
+							hero = i;			
+							console.log('hero = ' + hero);
+							heroSelect = false;
+							// Change instructional Text 
+							instructionTitle = "Choose your opponent!";
+							instructionalDiv = document.createElement('h1');
+		 					instructionalDiv.innerHTML = instructionTitle;
+		 					$('#supplemental').html(instructionalDiv);
+
+		 					// Change Update Text
+		 					updateText = characters[i].motto;
+							updateDiv = document.createElement('h1');
+							updateDiv.setAttribute('class', 'wit');
+		 					updateDiv.innerHTML = updateText;
+		 					$('#updates').html(updateDiv);
+
+		 					// Move Lineup
+
+		 					if (moveLineupNow === false){
+								moveLineup();
+								moveLineupNow = true;
+							}
+						}
+					}
+				}
+
+			});
+		}
+
+	}

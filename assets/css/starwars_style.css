@@ -49,9 +49,6 @@ a:hover {
 	display: inline-block;
 	vertical-align: top;
 	margin-right: 20px;
-
-
-
 }
 
 #header-top p {
@@ -79,8 +76,6 @@ a:hover {
 	margin-bottom: 20px;
 	border: 0px solid #666666;
 	height: 1000px;
-
-
 }
 
 #secondary {
@@ -91,9 +86,33 @@ a:hover {
 	background-color: rgba(0,0,0,0.75);
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#replay {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
 
 
 }
+
+.action {
+	background-color: rgba(220,129,15,0.65);
+	font-size: 12px;
+	color: #FFFFFF;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: block;
+	border: 0px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+
+}
+
+
+
 
 #instructions {
 	padding-left: 30px;
@@ -143,42 +162,44 @@ a:hover {
 
 #supplemental {
 	padding-left: 0px;
-	padding-right: 30px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-right: 0px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	text-align: center;
 	/*background-color: rgba(0,0,0,0.75);*/
 }
 
 #supplemental h1{
-	font-size: 22px;
-	color: #ffffff;
+	font-size: 26px;
+	color: #d8931c;
 	margin: 0px;
 	padding: 0px;
+	font-weight: 300;
+
+}
+
+.white {
+	color: #FFFFFF;
 
 }
 
 #updates {
-
 	width: 100%;
-	padding: 10px;
-	border: 1px solid #666666;
+	padding: 5px;
+	border-top: 1px solid #666666;
+	border-left: 1px solid #666666;
+	border-right: 1px solid #666666;
+	border-bottom: 0px solid #666666;
 	text-align: center;
 	position: relative;
-	margin-bottom: 20px;
-
-}
-
-#updates h1 {
+	margin-bottom: 0px;
 	font-size: 16px;
 	font-weight: 400;
 	color: #ffffff;
-	margin: 0px;
-	padding: 0px;
 	font-style: italic;
-
-
-
+	background-color: rgba(220,129,15,0.15);
 }
+
 
 #lineup {
 	height: 500px;
@@ -210,8 +231,12 @@ a:hover {
 .faded {
 	opacity: 0.2;
     filter: alpha(opacity=20); /* For IE8 and earlier */
+}
 
-
+.hidden {
+	display: none;
+	opacity: 0.0;
+    filter: alpha(opacity=0); /* For IE8 and earlier */
 }
 
 #battfieldHolder {
@@ -254,6 +279,37 @@ a:hover {
 	padding: 0px;
 }
 
+.character img {
+	height: 250px;
+}
+
+.winnerImage img{
+	height: 250px;
+}
+
+.winner h3 {
+	font-size: 22px;
+	color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+	font-weight: 300;
+}
+
+.playAgain {
+	font-size: 22px;
+	color: #ffffff;
+	margin: 0px;
+	padding: 0px;
+	font-weight: 300;
+}
+
+.vaderText {
+	font-style: italic;
+	color: red;
+	font-size: 28px;
+
+}
+
 .vs {
 	display: inline-block;
 	margin: 0px;
@@ -276,6 +332,18 @@ a:hover {
 
 
 
+}
+
+.victory {
+	display: inline-block;
+	vertical-align: top;
+	padding: 20px;
+}
+
+.victory h1 {
+	font-size: 24px;
+	color: #ffffff;
+	margin-top: 50px;
 }
 
 
@@ -368,6 +436,15 @@ button.force:active {
 	background: #24243f;
 }
 
+button.action:hover {
+	background: #2554c0;
+}
+
+button.action:active {
+	background: #24243f;
+}
+
+
 
 .buttons {
 	
@@ -380,6 +457,13 @@ h1.defenderHP {
 
 
 }
+h1.heroHP {
+
+	display: inline-block;
+
+
+}
+
 
 h4.damage {
 	margin-top: -5px;
@@ -393,13 +477,16 @@ h4.damage {
 	vertical-align: top;
 }
 
-
-
-
-.character img {
-	height: 250px;
-
-
+h4.heroDamage {
+	margin-top: -5px;
+	padding: 0px;
+	color: red;
+	font-size: 30px;
+	margin-bottom: 0px;
+	margin-left: -5px;
+	font-weight: 300;
+	display: inline-block;
+	vertical-align: top;
 }
 
 

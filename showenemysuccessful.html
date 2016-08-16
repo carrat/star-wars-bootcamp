@@ -1,0 +1,52 @@
+// Show Winner
+
+	function showWinner() {
+
+		if (winner >= 0 && loser >=0) {
+
+			// Draw Battlefield
+			battlefieldDiv = document.createElement('div');
+			$(battlefieldDiv).attr("id","battlefield");
+
+			// Create Winner Image
+			winnerImgDiv = document.createElement('div');
+			$(winnerImgDiv).attr('class', 'winnerImage');
+			winnerImg = document.createElement('IMG');
+			$(winnerImg).attr('src', characters[winner].image);
+			$(winnerImgDiv).html(winnerImg);
+
+			// Create Winner Rendering
+			winnerDiv = document.createElement('div');
+			$(winnerDiv).addClass('winner');
+			
+			winnerName = document.createElement('h3');
+			$(winnerName).html(characters[winner].name + " defeated " + characters[loser].name);
+			$(winnerDiv).html(winnerName);
+
+			// Play Again
+			playAgainDiv = document.createElement('div');
+			playAgainText = document.createElement('h3');
+			$(playAgainText).addClass('playAgain');
+
+			if (losses == 0 && totalVictory == 0) {
+				$(playAgainDiv).html("Choose Your Next Opponent!")
+
+			}
+
+			else if (losses == 0 && totalVictory == 1) {
+				$(playAgainDiv).html("You have defeated the Empire! The Galaxy is safe again!")
+
+			}
+
+			else if (losses >= 1) {
+				$(playAgainDiv).html("The Rebellion has been crushed. You are not worthy.")
+
+			}
+
+			$('#battlefield').append(winnerDiv);
+			$('#battlefield').append(winnerImgDiv);
+			$('#battlefield').append(playAgainDiv);
+			
+		}
+
+	}
