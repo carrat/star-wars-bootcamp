@@ -35,29 +35,7 @@
 						else if (heroSelect === true) {
 							hero = i;			
 							console.log('hero = ' + hero);
-							heroSelect = false;
-
-							// Change instructional Text 
-							instructionTitle = "Choose your opponent!";
-							instructionalDiv = document.createElement('h1');
-		 					instructionalDiv.innerHTML = instructionTitle;
-		 					$('#supplemental').html(instructionalDiv);
-
-		 					// Change Update Text
-
-		 					updateText = characters[i].motto;
-							updateDiv = document.createElement('h1');
-							updateDiv.setAttribute('class', 'wit');
-		 					updateDiv.innerHTML = updateText;
-		 					$('#updates').html(updateDiv);
-
-		 					// Move Lineup
-
-		 					if (moveLineupNow === false){
-								moveLineup();
-								moveLineupNow = true;
-							}
-
+							
 
 
 						}

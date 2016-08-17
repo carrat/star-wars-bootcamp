@@ -41,7 +41,7 @@
 	var winner = -1;
 	var loser = -1;
 	var cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
-	var vader = 0; // If set to true, game will load final combat against Vader
+	var vaderActive = 0; // If set to true, game will load final combat against Vader
 
 
 	// Characters Array
@@ -50,7 +50,7 @@
 	    name: "Obi-Wan Kenobi",
 	    image: "assets/images/characters/kenobi.png", 
 	    hp: 190,
-	    motto: "Use the force, Luke!",
+	    motto: "If you strike me down, I shall become more powerful than you could possibly imagine.",
 	    class: "kenobi",
 	    selected: false,
 	    hero: false
@@ -70,7 +70,7 @@
 	    name: "Chewbacca",
 	    image: "assets/images/characters/chewbacca.png", 
 	    hp: 180,
-	    motto: "Raaahrrhh!",
+	    motto: "RRRAARRWHHGWWR!",
 	    class: "chewbacca",
 	    selected: false,
 	    hero: false
@@ -80,7 +80,7 @@
 	    name: "Princess Leia",
 	    image: "assets/images/characters/leia.png", 
 	    hp: 150,
-	    motto: "Aren't you a little small for a stormtrooper?",
+	    motto: "Aren't you a little short for a stormtrooper? ",
 	    class: "leia",
 	    selected: false,
 	    hero: false
@@ -100,7 +100,7 @@
 	    name: "Rey",
 	    image: "assets/images/characters/rey.png", 
 	    hp: 140,
-	    motto: "You're part of the Rebellion?",
+	    motto: "I can do this. I can do this.",
 	    class: "rey",
 	    selected: false,
 	    hero: false
@@ -110,7 +110,7 @@
 	    name: "Greedo",
 	    image: "assets/images/characters/greedo.png", 
 	    hp: 150,
-	    motto: "Erg Num If Tus Ji Org!",
+	    motto: "You should have paid him when you had the chance.",
 	    class: "greedo",
 	    selected: false,
 	    hero: false
@@ -120,7 +120,7 @@
 	    name: "Lando Calrissian",
 	    image: "assets/images/characters/lando.png", 
 	    hp: 140,
-	    motto: "Foul-mouthed Jerk",
+	    motto: "You've got a lot of guts coming here, after what you pulled. ",
 	    class: "lando",
 	    selected: false,
 	    hero: false
@@ -130,7 +130,7 @@
 	    name: "Stormtrooper",
 	    image: "assets/images/characters/stormtrooper.png", 
 	    hp: 150,
-	    motto: "Hail to the Empire!",
+	    motto: "There's one, set for stun.",
 	    class: "stormtrooper",
 	    selected: false,
 	    hero: false
@@ -150,7 +150,7 @@
 	    name: "Darth Maul",
 	    image: "assets/images/characters/darthmaul.png", 
 	    hp: 190,
-	    motto: "Surrender or Die!",
+	    motto: "At last, we will have revenge.",
 	    class: "darthmaul",
 	    selected: false,
 	    hero: false
@@ -160,7 +160,7 @@
 	    name: "Bossk",
 	    image: "assets/images/characters/bossk.png", 
 	    hp: 160,
-	    motto: "#$%@!",
+	    motto: "I am Bossk from Trandosha. I did not come to Monad Ouptost to die in this arena.",
 	    class: "bossk",
 	    selected: false,
 	    hero: false
@@ -170,7 +170,7 @@
 	    name: "Luke Skywalker",
 	    image: "assets/images/characters/skywalker.png", 
 	    hp: 200,
-	    motto: "I am a Jedi Knight.",
+	    motto: "I am a Jedi, like my father before me. ",
 	    class: "skywalker",
 	    selected: false,
 	    hero: false
@@ -180,16 +180,11 @@
 	    name: "Mace Windu",
 	    image: "assets/images/characters/windu.png", 
 	    hp: 180,
-	    motto: "I am a Jedi Knight.",
+	    motto: "The oppression of the Sith will never return!",
 	    class: "windu",
 	    selected: false,
 	    hero: false
 	  }
-
-
-
-
-
 
 	]
 
@@ -198,7 +193,7 @@
 	    name: "Darth Vader",
 	    image: "assets/images/characters/vader.png", 
 	    hp: 200,
-	    motto: "You can not possibly understand the power of the Dark Side.",
+	    motto: "You don't know the power of the Dark Side.",
 	    class: "vader",
 	    selected: false,
 	    hero: false
@@ -206,7 +201,7 @@
 
 	// Change background image
 
-	if (vader == true) {
+	if (vaderActive == 1) {
 		$('html').css({'background-image': 'url(assets/images/bg/vader3.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
@@ -247,7 +242,7 @@
 		<div id="replay">
 		<button class="replay-game action">Play Again</button>
 		<button class="cheat action">Cheat</button>
-		<button class="vader action">Vader</button>
+		<!-- <button class="vader action">Vader</button> -->
 		</div>
 	</div>
 </div>
@@ -297,26 +292,95 @@ $(document).ready(function(){
 		cheat = 1;
 	}
 
+	function victoryScene() {
+		$('#main-content').css({'height': '700px)'});
+		$('html').css({'background-image': 'url(assets/images/bg/victory.png)'});
+		$('html').css({'background-size': 'cover'});
+		$('html').css({'min-height': '100%'});
+
+	}
+
+	function defeatScene() {
+		$('#main-content').css({'height': '700px)'});
+		$('html').css({'background-image': 'url(assets/images/bg/vader2.png)'});
+		$('html').css({'background-size': 'cover'});
+		$('html').css({'min-height': '100%'});
+
+	}
+
 	// Enter the Vader
 
 	function vader() {
-		vader = true;
+		vaderActive = 1;
 		$('html').css({'background-image': 'url(assets/images/bg/vader3.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
 
 		$('#lineup').empty();
 		$('#updateHolder').empty();
+
+		$('.faceVaderClass').on('click', faceVader);
+
+		console.log("VADER");
 	}
 
 	// Fight Darth Vader
 
 	function faceVader() {
+
+		console.log("FACE VADER");
+
+		$('#battlefieldHolder').empty();
+		$('#supplemental').empty();
+
+		createBattlefield();
+
+		// Create Defender Image
+			defenderImgDiv = document.createElement('div');
+			$(defenderImgDiv).attr('class', 'character defenderImage');
+			defenderImg = document.createElement('IMG');
+			$(defenderImg).attr('src', specialCharacter.image);
+			$(defenderImgDiv).html(defenderImg);
+
+			// Create Defender Rendering
+			defenderDiv = document.createElement('div');
+			$(defenderDiv).addClass('defender battle');
+			
+			defenderName = document.createElement('h3');
+			$(defenderName).text(specialCharacter.name);
+
+			hpLabel = document.createElement('h2');
+			$(hpLabel).text("HP");
+
+			defenderDamage = document.createElement('h4');
+			$(defenderDamage).attr('class', 'damage');
+
+			defenderHP = document.createElement('h1');
+			$(defenderHP).attr('class', 'defenderHP');
+			$(defenderHP).text(specialCharacter.hp);
+
+			$(defenderDiv).append(defenderName);
+			$(defenderDiv).append(hpLabel);
+			$(defenderDiv).append(defenderHP);
+			$(defenderDiv).append(defenderDamage);
+
+			$('#battlefield').append(defenderImgDiv);
+			$('#battlefield').append(defenderDiv);
+
+			defenderHP = specialCharacter.hp;
+
+			// Did the user attack?
+			$('.attack').on('click', calculateAttack);
+
+			// Did the user use the force?
+			$('.force').on('click', useForce);
+
+			$('.faceVaderClass').on('click', faceVader);
 		
 	}
 
 
-
+$('.faceVaderClass').on('click', faceVader);
 
 	// Start next match n Battle
 	function restartBattle() {
@@ -349,7 +413,6 @@ $(document).ready(function(){
 		// Determine random strength of blow
 			if (cheat == 0) {
 			attackStrength = Math.floor(Math.random() * (40-1)) + 4; 
-			console.log("Attack Strength = " + attackStrength);
 			}
 
 			else {
@@ -367,7 +430,6 @@ $(document).ready(function(){
 		// Determine random strength of blow
 			if (cheat == 0) {
 			attackStrength = Math.floor(Math.random() * (70-1)) + 30; 
-			console.log("Attack Strength = " + attackStrength);
 			}
 
 			else {
@@ -402,7 +464,6 @@ $(document).ready(function(){
 			// Determine random strength of blow
 			if (cheat == 0) {
 			retaliationStrength = Math.floor(Math.random() * (40-1)) + 4; 
-			console.log("Retaliation Strength = " + retaliationStrength);
 			}
 
 			else {
@@ -457,7 +518,13 @@ $(document).ready(function(){
 				losses++;
 
 				// Change Update Text
-				updateText = characters[defender].name + " is the winner!";
+				if (vaderActive == 0) {
+					updateText = characters[defender].name + " is the winner!";
+				}
+
+				else if (vaderActive == 1) {
+				updateText = specialCharacter.name + " is the winner!";
+				}
 				updateDiv = document.createElement('div');
 				updateDiv.setAttribute('class', 'wit');
 				updateDiv.setAttribute('id', 'updates');
@@ -472,7 +539,15 @@ $(document).ready(function(){
 				battleRecord.push(defender);	
 
 				// Record winner and loser
+
+				if (vaderActive == 0) {
 				winner = defender;
+				}
+
+				else if (vaderActive == 1){
+				winner = 'Darth Vader';
+				}
+
 				loser = hero;
 
 				showWinner()
@@ -499,8 +574,15 @@ $(document).ready(function(){
 				updateDiv.innerHTML = updateText;
 				$('#updateHolder').html(updateDiv);
 
-				winner = defender;
-				loser = hero;
+				if (vaderActive == 0) {
+					winner = defender;
+					loser = hero;
+				}
+
+				else if (vaderActive == 1) {
+					loser = hero;
+
+				}
 
 				showWinner()
 		}
@@ -509,7 +591,6 @@ $(document).ready(function(){
 
 	// Write 'attack' function
 	function attackEnemy() {
-		console.log(cheat);
 
 		// Determine the strength of the attack
 		if (defenderHP > 0) {
@@ -616,7 +697,6 @@ $(document).ready(function(){
 		$('.character').click(function() {
 			// which character did they select?
 			character = $(this).attr('id');
-			console.log(character);
 
 			// is this character a hero or an opponent?
 			if (hero < 0) {
@@ -672,7 +752,6 @@ $(document).ready(function(){
 					if ($.inArray(character, usedCharacters) < 0) {
 
 						restartBattle();
-						console.log("restart")
 
 						defender = character;
 
@@ -893,7 +972,14 @@ $(document).ready(function(){
 
 	function showWinner() {
 
-		if (winner >= 0 && loser >=0) {
+			console.log("Winner: " + winner);
+			console.log("Loser: " + loser);
+			console.log("Vader: " + vaderActive);
+
+		if (winner >= 0 && loser >=0 && vaderActive == 0) {
+
+			console.log("winner >= 0 and Loser >= 0 and vaderActive = 0");
+
 
 			$('#battlefield').empty();
 
@@ -945,26 +1031,71 @@ $(document).ready(function(){
 				$(faceVaderButton).addClass('faceVaderClass');
 				faceVaderButton.innerHTML = "Face Vader";
 				$(playOnDiv).append(faceVaderButton);
+				$('#battlefield').append(playOnDiv);
+
+				$('.faceVaderClass').on('click', faceVader);
 
 				vader();
 			}
 
-			else if (losses == 0 && totalVictory == 1) {
-				$(playAgainDiv).html("You have defeated the Empire! The Galaxy is safe again!")
-
-			}
-
-			else if (losses >= 1) {
+			else if (losses >= 1 && vaderActive == 0) {
 				$(playAgainDiv).html("The Rebellion has been crushed. You are not worthy.")
 
 			}
 
 			$('#battlefield').append(winnerDiv);
 			$('#battlefield').append(winnerImgDiv);
-			$('#battlefield').append(playAgainDiv);
-			$('#battlefield').append(playOnDiv);
-			
-			console.log("Wins: " + wins);
+			$('#battlefield').append(playAgainDiv);		
+		
+		}
+
+		else if (vaderActive == 1) {
+
+			if (losses >= 1) {
+				// Change instructional Text 
+
+				instructionalDiv = document.createElement('h1');
+				$(instructionalDiv).html("You don't know the power of the Dark Side.");
+				$('#supplemental').html(instructionalDiv);
+
+				$('#updateHolder').empty();		
+				$('#battlefield').empty();
+
+				defeatScene();
+
+			}
+
+			else if (losses == 0) {
+
+				// Change instructional Text 
+
+				instructionalDiv = document.createElement('h1');
+				$(instructionalDiv).html("You have defeated the Empire! The Galaxy is safe again!");
+				$('#supplemental').html(instructionalDiv);
+
+				$('#updateHolder').empty();
+				
+				$('#battlefield').empty();
+
+				victoryScene();
+
+				// Draw Battlefield
+				battlefieldDiv = document.createElement('div');
+				$(battlefieldDiv).attr("id","battlefield");
+
+				// Create Winner Image
+				winnerImgDiv = document.createElement('div');
+				$(winnerImgDiv).attr('class', 'winnerImage');
+				winnerImg = document.createElement('IMG');
+				$(winnerImg).attr('src', characters[winner].image);
+				$(winnerImgDiv).html(winnerImg);
+
+				// Create Winner Rendering
+				winnerDiv = document.createElement('div');
+				$(winnerDiv).addClass('winner');
+
+			}
+
 		}
 
 	}
