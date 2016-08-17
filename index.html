@@ -3,12 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Star Wars</title>
-	<!-- Add unique stylesheet -->
-	<link href="assets/css/starwars_style.css" rel="stylesheet" type="text/css">
-	<!-- Add Font Awesome -->
-	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
-	<!-- Add Google Web Font -->
-	<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'>
+	
+	<link href="assets/css/starwars_style.css" rel="stylesheet" type="text/css"><!-- Add unique stylesheet -->
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"><!-- Add Font Awesome -->
+	<link href='https://fonts.googleapis.com/css?family=Poppins:400,300,500,600,700' rel='stylesheet' type='text/css'><!-- Add Google Web Font -->
 
 	<script 
 	src="https://code.jquery.com/jquery-3.1.0.js"   
@@ -43,7 +41,6 @@
 	var cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
 	var vaderActive = 0; // If set to true, game will load final combat against Vader
 
-
 	// Characters Array
 	var characters = [
 	  {
@@ -53,9 +50,9 @@
 	    motto: "If you strike me down, I shall become more powerful than you could possibly imagine.",
 	    class: "kenobi",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "kenobi.mp3"
 	  },
-
 	  {
 	    name: "Han Solo",
 	    image: "assets/images/characters/solo.png", 
@@ -63,9 +60,9 @@
 	    motto: "Who's scruffy-looking?",
 	    class: "solo",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "solo.mp3"
 	  },
-
 	  {
 	    name: "Chewbacca",
 	    image: "assets/images/characters/chewbacca.png", 
@@ -73,9 +70,9 @@
 	    motto: "RRRAARRWHHGWWR!",
 	    class: "chewbacca",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "chewbacca.mp3"
 	  },
-
 	  {
 	    name: "Princess Leia",
 	    image: "assets/images/characters/leia.png", 
@@ -83,19 +80,19 @@
 	    motto: "Aren't you a little short for a stormtrooper? ",
 	    class: "leia",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "leia.mp3"
 	  },
-
 	  {
 	    name: "Boba Fett",
 	    image: "assets/images/characters/bobafett.png", 
 	    hp: 170,
-	    motto: "You're worth a lot of money to me.",
+	    motto: "What if he doesn't survive? he's worth a lot to me.",
 	    class: "bobafett",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "bobafett.mp3"
 	  },
-
 	  {
 	    name: "Rey",
 	    image: "assets/images/characters/rey.png", 
@@ -103,19 +100,19 @@
 	    motto: "I can do this. I can do this.",
 	    class: "rey",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: ""
 	  },
-
 	  {
 	    name: "Greedo",
 	    image: "assets/images/characters/greedo.png", 
 	    hp: 150,
-	    motto: "You should have paid him when you had the chance.",
+	    motto: "You should have paid me when you had the chance.",
 	    class: "greedo",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "greedo.mp3"
 	  },
-
 	  {
 	    name: "Lando Calrissian",
 	    image: "assets/images/characters/lando.png", 
@@ -123,19 +120,19 @@
 	    motto: "You've got a lot of guts coming here, after what you pulled. ",
 	    class: "lando",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "lando.mp3"
 	  },
-
 	  {
 	    name: "Stormtrooper",
 	    image: "assets/images/characters/stormtrooper.png", 
 	    hp: 150,
-	    motto: "There's one, set for stun.",
+	    motto: "Alright, let's go",
 	    class: "stormtrooper",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "stormtrooper.mp3"
 	  },
-
 	  {
 	    name: "Yoda",
 	    image: "assets/images/characters/yoda.png", 
@@ -143,9 +140,9 @@
 	    motto: "Do or do not; There is no try",
 	    class: "yoda",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "yoda.mp3"
 	  },
-
 	  {
 	    name: "Darth Maul",
 	    image: "assets/images/characters/darthmaul.png", 
@@ -153,19 +150,19 @@
 	    motto: "At last, we will have revenge.",
 	    class: "darthmaul",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "darthmaul.mp3"
 	  },
-
-	   {
+	  {
 	    name: "Bossk",
 	    image: "assets/images/characters/bossk.png", 
 	    hp: 160,
 	    motto: "I am Bossk from Trandosha. I did not come to Monad Ouptost to die in this arena.",
 	    class: "bossk",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: ""
 	  },
-
 	  {
 	    name: "Luke Skywalker",
 	    image: "assets/images/characters/skywalker.png", 
@@ -173,19 +170,19 @@
 	    motto: "I am a Jedi, like my father before me. ",
 	    class: "skywalker",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "skywalker.mp3"
 	  },
-
 	   {
 	    name: "Mace Windu",
 	    image: "assets/images/characters/windu.png", 
 	    hp: 180,
-	    motto: "The oppression of the Sith will never return!",
+	    motto: "The oppression of the Sith will never return! You have lost.",
 	    class: "windu",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "windu.mp3"
 	  }
-
 	]
 
 	// Create Darth Vader
@@ -196,7 +193,8 @@
 	    motto: "You don't know the power of the Dark Side.",
 	    class: "vader",
 	    selected: false,
-	    hero: false
+	    hero: false,
+	    sound: "vader.mp3"
 	  }
 
 	// Change background image
@@ -214,9 +212,7 @@
 	}
 	
 	</script>
-
 </head>
-
 <body>
 <!-- Start Display -->
 
@@ -226,10 +222,8 @@
 		<div id="logo"><img src="assets/images/star-wars-logo-2.png" width="150px"></div>
 		<!-- Display instructions -->
 		<div id="instructions">
-
 			<div id="instructionsContent">
-
-			<h1>How to Play</h1>
+				<h1>How to Play</h1>
 				<ol>
 					<li><strong>Select your hero</strong> and your first opponent</li>
 					<li><strong>Attack your opponent</strong> to reduce their Hit Points to 0 before they do the same to you</li>
@@ -249,17 +243,14 @@
 
 <!-- Render Container -->
 <div id="container">
-
 <!-- Display Supplemental information -->
 	<div id="supplemental"></div>
-
 <!-- Display Main Content -->
 	<div id="main-content">
 		<div id="updateHolder"></div>
 		<div id="battlefieldHolder"></div>
 		<div id="lineup"></div>
 	</div>	
-
 </div>
 
 <!-- Display Footer -->
@@ -268,12 +259,10 @@
 	Demo project for <a href="https://www.codingbootcamputaustin.com/">The Coding Boot Camp</a>  at UT Austin Center for Professional Education
 	</p>
 </div>
-<script>
 
+<script>
 // If page is ready
 $(document).ready(function(){
-
-
 
 	// Event Handlers
 	$('.replay-game').on('click', resetGame); // Reset Game to start over from the beginning
@@ -283,7 +272,6 @@ $(document).ready(function(){
 	$('.force').on('click', useForce);	// Did the user use the force?	
 	$('.faceVaderClass').on('click', faceVader); // Are you ready to face Vader
 	
-
 	//Display Cue
 	instructionalDiv = document.createElement('h1');
 	instructionalDiv.innerHTML = instructionTitle;
@@ -332,14 +320,8 @@ $(document).ready(function(){
 	instructionalDiv.innerHTML = instructionTitle;
 	$('#supplemental').html(instructionalDiv);
 
-
 	// Render character lineup for choice
 	createLineup();
-
-	console.log("Hero = " + hero);
-	console.log("Defender = " + defender);
-
-
 	}
 
 	// Turn on CHEAT DEV FEATURE
@@ -354,6 +336,21 @@ $(document).ready(function(){
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
 
+		//Play Audio
+		var audioElement2 = document.createElement('audio');
+		audioElement2.setAttribute('src', 'assets/sounds/events/forcewithyou.mp3');
+		audioElement2.play();
+
+		//Play Audio
+		var audioElement3 = document.createElement('audio');
+		audioElement3.setAttribute('src', 'assets/sounds/events/throneroommusic.mp3');
+		audioElement3.play();
+
+		var videoElement = document.createElement('video');
+		videoElement.setAttribute('src', 'https://www.youtube.com/watch?v=frdj1zb9sMY');
+		$('#battlefield').html(videoElement);
+
+
 	}
 
 	// Display Special Scene on Defeat
@@ -362,6 +359,11 @@ $(document).ready(function(){
 		$('html').css({'background-image': 'url(assets/images/bg/vader2.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
+		//Play Audio
+		var audioElement = document.createElement('audio');
+		audioElement.setAttribute('class', 'audio');
+		audioElement.setAttribute('src', 'assets/sounds/events/imperialmarch.mp3');
+		audioElement.play();
 
 	}
 
@@ -375,6 +377,11 @@ $(document).ready(function(){
 		$('#lineup').empty();
 		$('#updateHolder').empty();
 
+		//Play Audio
+		var audioElement = document.createElement('audio');
+		audioElement.setAttribute('src', 'assets/sounds/vader/breathing.mp3');
+		audioElement.play();
+
 		$('.faceVaderClass').on('click', faceVader);
 
 		console.log("VADER");
@@ -387,6 +394,13 @@ $(document).ready(function(){
 
 		$('#battlefieldHolder').empty();
 		$('#supplemental').empty();
+
+
+
+		//Play Audio
+		var audioElement = document.createElement('audio');
+		audioElement.setAttribute('src', 'assets/sounds/vader/ihaveyounow.mp3');
+		audioElement.play();
 
 		createBattlefield();
 
@@ -426,7 +440,6 @@ $(document).ready(function(){
 
 			$('.attack').on('click', calculateAttack); // Did the user attack?
 			$('.force').on('click', useForce);	// Did the user use the force?	
-		
 	}
 
 	// Start next match n Battle
@@ -460,11 +473,9 @@ $(document).ready(function(){
 		if (cheat == 0) {
 			attackStrength = Math.floor(Math.random() * (40-1)) + 4; 
 		}
-
 		else {
 			attackStrength = 40;
 		}
-
 		attackEnemy();
 	}
 
@@ -594,7 +605,6 @@ $(document).ready(function(){
 			$(".heroHP").animate({opacity: 1.00}, "fast").animate({fontSize: "64px"}, "fast");
 			$(".heroHP").text(heroHP);
 		}
-
 		// Hero is dead
 		else if (heroHP <= 0) {
 			heroHP = 0;
@@ -613,16 +623,12 @@ $(document).ready(function(){
 				winner = defender;
 				loser = hero;
 			}
-
 			else if (vaderActive == 1) {
 				loser = hero;
 			}
-
 			showWinner()
 		}
-
 	}
-
 	// Write 'attack' function
 	function attackEnemy() {
 
@@ -637,7 +643,6 @@ $(document).ready(function(){
 			attackStrength = '';
 			$('.damage').html(attackStrength);
 		}
-
 		// Recheck status of defender after the consequence of the attack
 		// Defender is still alive, but injured. Show injury
 		if (defenderHP > 0) {
@@ -710,12 +715,10 @@ $(document).ready(function(){
 
 			showWinner()
 		}
-
 		// If Opponent is still alive, retaliate!
 		if (defenderHP > 0) {
 			retaliation();
 		}
-
 	}
 
 	// choose characters
@@ -739,7 +742,6 @@ $(document).ready(function(){
 					characters[hero].hero = true;
 
 					// Change instructional Text 
-
 					heroDiv = document.createElement('span');
 					heroDiv.setAttribute('class', 'white');
 					$(heroDiv).html(characters[hero].name);
@@ -757,6 +759,14 @@ $(document).ready(function(){
 					$(instructionalDiv).append(heroDiv);
 					$(instructionalDiv).append(". Choose your opponent!");
 					$('#supplemental').html(instructionalDiv);
+
+					//Play Audio
+
+					if (characters[hero].sound !== '') {
+					var audioElement = document.createElement('audio');
+	        		audioElement.setAttribute('src', 'assets/sounds/characters/' + characters[hero].sound);
+        			audioElement.play();
+        			}
 
 					// Change Update Text
 					updateText = characters[hero].motto;
@@ -798,6 +808,12 @@ $(document).ready(function(){
 							$(instructionalDiv).append(". Fight!");
 							$('#supplemental').html(instructionalDiv);
 
+							//Play Audio
+							if (characters[hero].sound !== '') {
+							var audioElement = document.createElement('audio');
+			        		audioElement.setAttribute('src', 'assets/sounds/characters/' + characters[defender].sound);
+		        			audioElement.play();
+		        			}
 
 					 		// Change Update Text
 					 		updateText = characters[defender].motto;
@@ -809,11 +825,8 @@ $(document).ready(function(){
 
 					 		showEnemy();
 					 	}
-
 				 	}
-				 	
 				}
-
 			});
 		}
 	}
@@ -930,11 +943,9 @@ $(document).ready(function(){
 		heroHP = characters[hero].hp;
 		
 		$('#battlefieldHolder').append(battlefieldDiv);
-
 	}
 
 	// Show Enemy
-
 	function showEnemy() {
 
 		if (defender >= 0) {
@@ -975,25 +986,15 @@ $(document).ready(function(){
 
 			// Did the user attack?
 			$('.attack').on('click', calculateAttack);
-
 			// Did the user use the force?
 			$('.force').on('click', useForce);
 		}
-
 	}
 
 	// Show Winner
-
 	function showWinner() {
 
-			console.log("Winner: " + winner);
-			console.log("Loser: " + loser);
-			console.log("Vader: " + vaderActive);
-
 		if (winner >= 0 && loser >=0 && vaderActive == 0) {
-
-			console.log("winner >= 0 and Loser >= 0 and vaderActive = 0");
-
 
 			$('#battlefield').empty();
 
@@ -1013,7 +1014,6 @@ $(document).ready(function(){
 			$(winnerDiv).addClass('winner');
 
 			// Change instructional Text 
-
 			instructionalDiv = document.createElement('h1');
 			winningDiv = document.createElement('span');
 			winningDiv.setAttribute('class', 'white');
@@ -1038,7 +1038,6 @@ $(document).ready(function(){
 			else if (losses == 0 && wins ==3) {
 				$(playAgainDiv).attr('class', 'vaderText');
 				$(playAgainDiv).html("The Force is strong with this one. Prepare to DIE!")
-
 				playOnDiv = document.createElement('div');
 				$(playOnDiv).attr('class', 'playOn');
 				faceVaderButton = document.createElement('button');
@@ -1067,7 +1066,6 @@ $(document).ready(function(){
 
 			if (losses >= 1) {
 				// Change instructional Text 
-
 				instructionalDiv = document.createElement('h1');
 				$(instructionalDiv).html("You don't know the power of the Dark Side.");
 				$('#supplemental').html(instructionalDiv);
@@ -1082,13 +1080,11 @@ $(document).ready(function(){
 			else if (losses == 0) {
 
 				// Change instructional Text 
-
 				instructionalDiv = document.createElement('h1');
 				$(instructionalDiv).html("You have defeated the Empire! The Galaxy is safe again!");
 				$('#supplemental').html(instructionalDiv);
 
 				$('#updateHolder').empty();
-				
 				$('#battlefield').empty();
 
 				victoryScene();
@@ -1107,11 +1103,8 @@ $(document).ready(function(){
 				// Create Winner Rendering
 				winnerDiv = document.createElement('div');
 				$(winnerDiv).addClass('winner');
-
 			}
-
 		}
-
 	}
 
 	// Move the character lineup down to make room for the battlefield
@@ -1123,11 +1116,6 @@ $(document).ready(function(){
 
 	// Render character lineup for choice
 	createLineup();
-
-	console.log("Hero = " + hero);
-	console.log("Defender = " + defender);
-
-
 
 });
 </script>
