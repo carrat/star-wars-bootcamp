@@ -2,7 +2,6 @@
   box-sizing: border-box;
 }
 
-
 html {
 	/*background-image: url(http://assets2.ignimgs.com/2015/08/06/darth-vader-crossed-arms-1280jpg-88461e1280wjpg-67c0c2_1280w.jpg);
 	background-image: url(http://vignette4.wikia.nocookie.net/starwars/images/f/ff/X-wing_SWGTCG.jpg/revision/latest?cb=20090319165201);
@@ -10,23 +9,19 @@ html {
 	min-height: 100%;*/
 }
 
-
 body {
 	margin: 0px;
 	font-family: 'Poppins', Arial, sans-serif;
 	font-size: 15px;
 	margin-bottom: 70px;
-	
 }
 
 a {
 	color: #ffffff;
-
 }
 
 a:hover {
 	color: #d8931c;
-
 }
 
 #header-top {
@@ -56,6 +51,7 @@ a:hover {
 	color: #FFFFFF;
 
 }
+
 #container {
 	width: 980px;
 	margin-left: auto;
@@ -65,6 +61,7 @@ a:hover {
 	padding-top: 0px;
 	padding-bottom: 20px;
 	background-color: rgba(0,0,0,0.75);
+	height: 100%;
 }
 
 #main-content {
@@ -76,7 +73,6 @@ a:hover {
 	margin-top: 0px;
 	margin-bottom: 20px;
 	border: 0px solid #666666;
-	height: 1000px;
 }
 
 #secondary {
@@ -93,8 +89,6 @@ a:hover {
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
-
-
 }
 
 .action {
@@ -109,7 +103,6 @@ a:hover {
 	border: 0px;
 	margin-bottom: 5px;
 	margin-top: 10px;
-
 }
 
 .faceVaderClass {
@@ -128,7 +121,6 @@ a:hover {
 	display: block;
 	margin-right: auto;
     margin-left: auto;
-
 }
 
 .playOn {
@@ -151,7 +143,6 @@ a:hover {
 	color: #ffffff;
 	margin: 0px;
 	padding: 0px;
-
 }
 
 #instructions ol {
@@ -160,7 +151,6 @@ a:hover {
 	margin-left: 10px;
 	margin-right: 10px;
 	padding: 0px;
-
 }
 
 #instructions ol li {
@@ -197,12 +187,10 @@ a:hover {
 	margin: 0px;
 	padding: 0px;
 	font-weight: 300;
-
 }
 
 .white {
 	color: #FFFFFF;
-
 }
 
 #updates {
@@ -222,15 +210,11 @@ a:hover {
 	background-color: rgba(220,129,15,0.15);
 }
 
-
 #lineup {
-	height: 500px;
 	position: relative;
     left: 0px;
     bottom: 000px;
 	border: 1px;
-
-
 }
 
 .lineup {
@@ -238,16 +222,12 @@ a:hover {
 	border: 1px solid #666666;
 	text-align: center;
 	margin-bottom: 20px;
-
-
 }
 
 .lineup h4 {
 	font-size: 48px;
 	font-style: normal;
 	color: #d8931c;
-
-
 }
 
 .faded {
@@ -263,7 +243,6 @@ a:hover {
 
 #battfieldHolder {
 
-
 }
 
 #battlefield {
@@ -274,14 +253,10 @@ a:hover {
 	border: 1px solid #666666;
 	text-align: center;
 	margin-bottom: 20px;
-
-
 }
 
 .character {
 	display: inline-block;
-
-
 }
 
 .character h2 {
@@ -342,7 +317,6 @@ a:hover {
 	padding: 0px;
 	vertical-align: top;
 	text-align: center;
-
 }
 
 .vs h4 {
@@ -355,9 +329,6 @@ a:hover {
 	padding: 0px;
 	margin-right: 5px;
 	margin-left: 5px;
-
-
-
 }
 
 .victory {
@@ -372,9 +343,6 @@ a:hover {
 	margin-top: 50px;
 }
 
-
-
-
 .battle {
 	display: inline-block;
 	margin-left: 10px;
@@ -383,9 +351,8 @@ a:hover {
 	vertical-align: top;
 	text-align: center;
 	width: 250px;
-
-
 }
+
 .battle h1{
 	font-size: 64px;
 	font-style: normal;
@@ -417,7 +384,6 @@ a:hover {
 	font-weight: 400;
 	margin: 0px;
 	padding: 0px;
-
 }
 
 button.attack {
@@ -437,6 +403,7 @@ button.attack {
 button.attack:hover {
 	background: #db5115;
 }
+
 button.attack:active {
 	background: #730808;
 }
@@ -472,34 +439,23 @@ button.action:active {
 
 button.faceVaderClass:hover {
 	background: #d97b00;
-
-
 }
+
 button.faceVaderClass:active {
 	background: #000000;
-	
 }
 
-
-
 .buttons {
-	
 	text-align: center;
 }
 
 h1.defenderHP {
-
 	display: inline-block;
-
-
 }
+
 h1.heroHP {
-
 	display: inline-block;
-
-
 }
-
 
 h4.damage {
 	margin-top: -5px;
@@ -525,6 +481,14 @@ h4.heroDamage {
 	vertical-align: top;
 }
 
+.propaganda {
+	opacity: 0.8;
+    filter: alpha(opacity=7); /* For IE8 and earlier */
+}
+
+img.prop {
+
+}
 
 #footer {
 	background-color: rgba(0,0,0,0.75);
@@ -538,14 +502,11 @@ h4.heroDamage {
 	position: fixed;
 	bottom: 0;
 	left: 0;
-
 }
 
 #footer p {
 	font-size: 12px;
 	color: #666666;
-
-
 }
 
 
@@ -554,6 +515,5 @@ h4.heroDamage {
 
 
 @media screen and (max-width: 768px) {
-
 	
 }

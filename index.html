@@ -41,6 +41,7 @@
 	var cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
 	var vaderActive = 0; // If set to true, game will load final combat against Vader
 	var audioDisable = 0; //If set to 1, all audio will be disabled
+	var victoryImage = ""
 
 	// Characters Array
 	var characters = [
@@ -314,6 +315,7 @@ $(document).ready(function(){
 	$('html').css({'min-height': '100%'});	
 
 	$('#battlefieldHolder').empty();
+	$('#battlefield').empty();
 	$('#supplemental').empty();
 	$('#updateHolder').empty();
 	$('#lineup').empty();
@@ -360,9 +362,18 @@ $(document).ready(function(){
 		var audioElement3 = document.createElement('audio');
 		audioElement3.setAttribute('src', 'assets/sounds/events/throneroommusic.mp3');
 		audioElement3.play();
-
 		}
 
+		// Show Propaganada
+		propImgDiv = document.createElement('div');
+		$(propImgDiv).attr('class', 'propaganda rebellion');
+		propImg = document.createElement('IMG');
+		$(propImg).attr('class', 'prop');
+		$(propImg).attr('src', 'assets/images/prop/rebellion2.jpg');
+		$(propImgDiv).html(propImg);
+		$('#battlefield').append(propImgDiv);
+
+		//Play Video on victory
 		//var videoElement = document.createElement('video');
 		//videoElement.setAttribute('src', 'https://www.youtube.com/watch?v=frdj1zb9sMY');
 		//$('#battlefield').html(videoElement);
@@ -379,13 +390,19 @@ $(document).ready(function(){
 		
 		//Play Audio
 		if (audioDisable !== 1) {
-
-		var audioElement = document.createElement('audio');
-		audioElement.setAttribute('class', 'audio');
-		audioElement.setAttribute('src', 'assets/sounds/events/imperialmarch.mp3');
-		audioElement.play();
+			var audioElement = document.createElement('audio');
+			audioElement.setAttribute('class', 'audio');
+			audioElement.setAttribute('src', 'assets/sounds/events/imperialmarch.mp3');
+			audioElement.play();
 		}
-
+		// Show Propaganada
+		propImgDiv = document.createElement('div');
+		$(propImgDiv).attr('class', 'propaganda empire');
+		propImg = document.createElement('IMG');
+		$(propImg).attr('class', 'prop');
+		$(propImg).attr('src', 'assets/images/prop/empire2.jpg');
+		$(propImgDiv).html(propImg);
+		$('#battlefield').append(propImgDiv);		
 	}
 
 	// Enter the Vader
