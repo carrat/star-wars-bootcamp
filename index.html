@@ -223,7 +223,7 @@
 <!-- Display Header -->
 <div id ="header-top">
 	<div id="header-inner">	
-		<div id="logo"><img src="assets/images/star-wars-logo.png" width="150px"></div>
+		<div id="logo"><img src="assets/images/star-wars-logo-2.png" width="150px"></div>
 		<!-- Display instructions -->
 		<div id="instructions">
 
@@ -231,7 +231,7 @@
 
 			<h1>How to Play</h1>
 				<ol>
-					<li>Select your hero and your first opponent</li>
+					<li><strong>Select your hero</strong> and your first opponent</li>
 					<li><strong>Attack your opponent</strong> to reduce their Hit Points to 0 before they do the same to you</li>
 					<li><strong>Use the Force</strong> when your back is against the wall. Be careful though: you can only use it once!</li>
 					<li><strong>Defeat three enemies</strong> to win the game.</li>
@@ -272,6 +272,8 @@
 
 // If page is ready
 $(document).ready(function(){
+
+
 
 	// Event Handlers
 	$('.replay-game').on('click', resetGame); // Reset Game to start over from the beginning
@@ -315,6 +317,10 @@ $(document).ready(function(){
 	cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
 	vaderActive = 0; // If set to true, game will load final combat against Vader
 	character;
+
+	$('html').css({'background-image': 'url(assets/images/bg/spacebattle.png)'});
+	$('html').css({'background-size': 'cover'});
+	$('html').css({'min-height': '100%'});	
 
 	$('#battlefieldHolder').empty();
 	$('#supplemental').empty();
@@ -417,6 +423,9 @@ $(document).ready(function(){
 			$('#battlefield').append(defenderDiv);
 
 			defenderHP = specialCharacter.hp;
+
+			$('.attack').on('click', calculateAttack); // Did the user attack?
+			$('.force').on('click', useForce);	// Did the user use the force?	
 		
 	}
 

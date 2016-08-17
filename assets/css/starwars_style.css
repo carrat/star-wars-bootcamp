@@ -36,6 +36,7 @@ a:hover {
     background: #000000;
 	opacity: 0.8;
     filter: alpha(opacity=80); /* For IE8 and earlier */
+    /*background-color: rgba(0,0,0,0.75);*/
 }
 
 #header-inner {
@@ -134,10 +135,6 @@ a:hover {
 	width: 100%;
 	text-align: center;
 }
-
-
-
-
 
 #instructions {
 	padding-left: 30px;
@@ -270,7 +267,10 @@ a:hover {
 }
 
 #battlefield {
-	padding: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	padding-bottom: 5px;
 	border: 1px solid #666666;
 	text-align: center;
 	margin-bottom: 20px;
