@@ -40,6 +40,7 @@
 	var loser = -1;
 	var cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
 	var vaderActive = 0; // If set to true, game will load final combat against Vader
+	var audioDisable = 0; //If set to 1, all audio will be disabled
 
 	// Characters Array
 	var characters = [
@@ -101,7 +102,7 @@
 	    class: "rey",
 	    selected: false,
 	    hero: false,
-	    sound: ""
+	    sound: null
 	  },
 	  {
 	    name: "Greedo",
@@ -161,7 +162,7 @@
 	    class: "bossk",
 	    selected: false,
 	    hero: false,
-	    sound: ""
+	    sound: null
 	  },
 	  {
 	    name: "Luke Skywalker",
@@ -236,6 +237,7 @@
 		<div id="replay">
 		<button class="replay-game action">Play Again</button>
 		<button class="cheat action">Cheat</button>
+		<button class="disable action">Toggle Audio</button>
 		<!-- <button class="vader action">Vader</button> -->
 		</div>
 	</div>
@@ -267,6 +269,7 @@ $(document).ready(function(){
 	// Event Handlers
 	$('.replay-game').on('click', resetGame); // Reset Game to start over from the beginning
 	$('.cheat').on('click', cheatOn); // Initiate CHEAT so you can easily win all battles -- DEV FEATURE
+	$('.disable').on('click', disableAudioFunction); // Disable all audio from the game
 	$('.vader').on('click', vader); // Skip to Vader fight -- DEV FEATURE
 	$('.attack').on('click', calculateAttack); // Did the user attack?
 	$('.force').on('click', useForce);	// Did the user use the force?	
@@ -329,6 +332,17 @@ $(document).ready(function(){
 		cheat = 1;
 	}
 
+	// Disable all audio
+	function disableAudioFunction() {
+		if (audioDisable == 1) {
+			audioDisable = 0
+		}
+
+		else {
+			audioDisable = 1;
+		}
+	}
+
 	// DISPLAY SPECIAL SCENE ON VICTORY
 	function victoryScene() {
 		$('#main-content').css({'height': '700px)'});
@@ -336,6 +350,7 @@ $(document).ready(function(){
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
 
+		if (audioDisable !== 1) {
 		//Play Audio
 		var audioElement2 = document.createElement('audio');
 		audioElement2.setAttribute('src', 'assets/sounds/events/forcewithyou.mp3');
@@ -346,9 +361,11 @@ $(document).ready(function(){
 		audioElement3.setAttribute('src', 'assets/sounds/events/throneroommusic.mp3');
 		audioElement3.play();
 
-		var videoElement = document.createElement('video');
-		videoElement.setAttribute('src', 'https://www.youtube.com/watch?v=frdj1zb9sMY');
-		$('#battlefield').html(videoElement);
+		}
+
+		//var videoElement = document.createElement('video');
+		//videoElement.setAttribute('src', 'https://www.youtube.com/watch?v=frdj1zb9sMY');
+		//$('#battlefield').html(videoElement);
 
 
 	}
@@ -359,11 +376,15 @@ $(document).ready(function(){
 		$('html').css({'background-image': 'url(assets/images/bg/vader2.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
+		
 		//Play Audio
+		if (audioDisable !== 1) {
+
 		var audioElement = document.createElement('audio');
 		audioElement.setAttribute('class', 'audio');
 		audioElement.setAttribute('src', 'assets/sounds/events/imperialmarch.mp3');
 		audioElement.play();
+		}
 
 	}
 
@@ -377,10 +398,12 @@ $(document).ready(function(){
 		$('#lineup').empty();
 		$('#updateHolder').empty();
 
+		if (audioDisable !== 1) {
 		//Play Audio
 		var audioElement = document.createElement('audio');
 		audioElement.setAttribute('src', 'assets/sounds/vader/breathing.mp3');
 		audioElement.play();
+		}
 
 		$('.faceVaderClass').on('click', faceVader);
 
@@ -396,11 +419,12 @@ $(document).ready(function(){
 		$('#supplemental').empty();
 
 
-
+		if (audioDisable !== 1) {
 		//Play Audio
 		var audioElement = document.createElement('audio');
 		audioElement.setAttribute('src', 'assets/sounds/vader/ihaveyounow.mp3');
 		audioElement.play();
+		}
 
 		createBattlefield();
 
@@ -760,13 +784,15 @@ $(document).ready(function(){
 					$(instructionalDiv).append(". Choose your opponent!");
 					$('#supplemental').html(instructionalDiv);
 
-					//Play Audio
+					if (audioDisable !== 1) {
 
-					if (characters[hero].sound !== '') {
-					var audioElement = document.createElement('audio');
-	        		audioElement.setAttribute('src', 'assets/sounds/characters/' + characters[hero].sound);
-        			audioElement.play();
-        			}
+						//Play Audio
+						if (characters[hero].sound !== null) {
+						var audioElement = document.createElement('audio');
+		        		audioElement.setAttribute('src', 'assets/sounds/characters/' + characters[hero].sound);
+	        			audioElement.play();
+	        			}
+	        		}
 
 					// Change Update Text
 					updateText = characters[hero].motto;
@@ -808,12 +834,15 @@ $(document).ready(function(){
 							$(instructionalDiv).append(". Fight!");
 							$('#supplemental').html(instructionalDiv);
 
-							//Play Audio
-							if (characters[hero].sound !== '') {
-							var audioElement = document.createElement('audio');
-			        		audioElement.setAttribute('src', 'assets/sounds/characters/' + characters[defender].sound);
-		        			audioElement.play();
-		        			}
+							if (audioDisable !== 1) {
+
+								//Play Audio
+								if (characters[hero].sound !== null) {
+								var audioElement = document.createElement('audio');
+				        		audioElement.setAttribute('src', 'assets/sounds/characters/' + characters[defender].sound);
+			        			audioElement.play();
+			        			}
+			        		}
 
 					 		// Change Update Text
 					 		updateText = characters[defender].motto;
