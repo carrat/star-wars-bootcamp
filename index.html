@@ -199,6 +199,9 @@
 	    sound: "vader.mp3"
 	  }
 
+	 // Ads array
+	 var ads = ['coffee.jpg', 'cola.jpg', 'beggarscanyon.jpg', 'coludcity.jpg', 'dagobah.jpg', 'endor.jpg', 'kessel.jpg', 'moseisley.jpg', 'tatooine.jpg']
+
 	// Change background image
 
 	if (vaderActive == 1) {
@@ -238,7 +241,7 @@
 		<div id="replay">
 		<button class="replay-game action">Play Again</button>
 		<button class="cheat action">Cheat</button>
-		<button class="disable action">Toggle Audio</button>
+		<div id="audioButtonDiv"><button class="audio audioOn">Toggle Audio Off</button></div>
 		<!-- <button class="vader action">Vader</button> -->
 		</div>
 	</div>
@@ -263,6 +266,7 @@
 	</p>
 </div>
 
+
 <script>
 // If page is ready
 $(document).ready(function(){
@@ -270,11 +274,13 @@ $(document).ready(function(){
 	// Event Handlers
 	$('.replay-game').on('click', resetGame); // Reset Game to start over from the beginning
 	$('.cheat').on('click', cheatOn); // Initiate CHEAT so you can easily win all battles -- DEV FEATURE
-	$('.disable').on('click', disableAudioFunction); // Disable all audio from the game
+	$('.audio').on('click', disableAudioFunction); // Disable all audio from the game
 	$('.vader').on('click', vader); // Skip to Vader fight -- DEV FEATURE
 	$('.attack').on('click', calculateAttack); // Did the user attack?
 	$('.force').on('click', useForce);	// Did the user use the force?	
 	$('.faceVaderClass').on('click', faceVader); // Are you ready to face Vader
+
+
 	
 	//Display Cue
 	instructionalDiv = document.createElement('h1');
@@ -309,6 +315,7 @@ $(document).ready(function(){
 	cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
 	vaderActive = 0; // If set to true, game will load final combat against Vader
 	character;
+	activeAd = null;
 
 	$('html').css({'background-image': 'url(assets/images/bg/spacebattle.png)'});
 	$('html').css({'background-size': 'cover'});
@@ -343,6 +350,26 @@ $(document).ready(function(){
 		else {
 			audioDisable = 1;
 		}
+
+		// Change Toggle Audio button based on current state
+
+		$('#audioButtonDiv').empty();
+
+		if (audioDisable == 1) {
+			audioButton = document.createElement('button');
+			$(audioButton).attr('class', 'audio audioOff');
+			audioButton.innerHTML = "Toggle Audio On";
+			$('#audioButtonDiv').html(audioButton);
+		}
+
+		else if (audioDisable == 0) {
+			audioButton = document.createElement('button');
+			$(audioButton).attr('class', 'audio audioOn');
+			audioButton.innerHTML = "Toggle Audio Off";
+			$('#audioButtonDiv').html(audioButton);
+		}
+
+		$('.audio').on('click', disableAudioFunction); // Disable all audio from the game
 	}
 
 	// DISPLAY SPECIAL SCENE ON VICTORY
@@ -1099,13 +1126,23 @@ $(document).ready(function(){
 
 			else if (losses >= 1 && vaderActive == 0) {
 				$(playAgainDiv).html("The Rebellion has been crushed. You are not worthy.")
+				$('#lineup').empty();
 
+				var activeAd = ads[Math.floor(Math.random() * ads.length)];
+
+				// Show Ad
+				adImgDiv = document.createElement('div');
+				$(adImgDiv).attr('class', 'adDiv');
+				adImg = document.createElement('IMG');
+				$(adImg).attr('class', 'ad');
+				$(adImg).attr('src', 'assets/images/ads/' + activeAd);
+				$(adImgDiv).html(adImg);
+				$(playAgainDiv).append(adImgDiv);
 			}
 
 			$('#battlefield').append(winnerDiv);
 			$('#battlefield').append(winnerImgDiv);
 			$('#battlefield').append(playAgainDiv);		
-		
 		}
 
 		else if (vaderActive == 1) {
@@ -1120,7 +1157,6 @@ $(document).ready(function(){
 				$('#battlefield').empty();
 
 				defeatScene();
-
 			}
 
 			else if (losses == 0) {

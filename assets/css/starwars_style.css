@@ -24,6 +24,17 @@ a:hover {
 	color: #d8931c;
 }
 
+#adHolder {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+	z-index: -100;
+}
+
 #header-top {
 	width: 100%;
 	padding: 10px;
@@ -104,6 +115,28 @@ a:hover {
 	margin-bottom: 5px;
 	margin-top: 10px;
 }
+
+.audio {
+	font-size: 12px;
+	color: #FFFFFF;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: block;
+	border: 0px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+}
+
+.audioOn {
+	background-color: rgba(220,129,15,0.65);
+}
+
+.audioOff {
+	background-color: rgba(100,100,100,0.65);
+}
+
 
 .faceVaderClass {
 	background-color: rgba(220,0,0,0.65);
@@ -437,6 +470,15 @@ button.action:active {
 	background: #24243f;
 }
 
+button.audio:hover {
+	background: #2554c0;
+}
+
+button.audio:active {
+	background: #24243f;
+}
+
+
 button.faceVaderClass:hover {
 	background: #d97b00;
 }
@@ -488,6 +530,10 @@ h4.heroDamage {
 
 img.prop {
 
+}
+
+img.ad {
+	margin-top: 20px;
 }
 
 #footer {
