@@ -60,7 +60,6 @@ a:hover {
 
 #header-top p {
 	color: #FFFFFF;
-
 }
 
 #container {
@@ -136,7 +135,6 @@ a:hover {
 .audioOff {
 	background-color: rgba(100,100,100,0.65);
 }
-
 
 .faceVaderClass {
 	background-color: rgba(220,0,0,0.65);
@@ -341,7 +339,6 @@ a:hover {
 	color: red;
 	font-size: 28px;
 	text-align: center;
-
 }
 
 .vs {
@@ -395,7 +392,6 @@ a:hover {
 	margin-top: -20px;
 	margin-bottom: 0px;
 	padding: 0px;
-
 }
 
 .battle h2{
@@ -406,7 +402,6 @@ a:hover {
 	font-weight: 400;
 	margin: 0px;
 	padding: 0px;
-
 }
 
 .battle h3{
@@ -477,7 +472,6 @@ button.audio:hover {
 button.audio:active {
 	background: #24243f;
 }
-
 
 button.faceVaderClass:hover {
 	background: #d97b00;
@@ -555,8 +549,6 @@ img.ad {
 	font-size: 12px;
 	color: #666666;
 }
-
-
 
 
 
