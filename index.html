@@ -36,12 +36,11 @@
 	var heroVictory = 0; // Has the user won?
 	var defenderVictory = 0; // Has the user lost?
 	var usedCharacters = []; // Keep track of all characters used including hero
-	var winner = -1;
-	var loser = -1;
+	var winner = -1; // There is not yet a winner
+	var loser = -1; // There is not yet a loser
 	var cheat = 0; // If set to true, it makes it much easier to win so you can see what happens on victory
 	var vaderActive = 0; // If set to true, game will load final combat against Vader
 	var audioDisable = 0; //If set to 1, all audio will be disabled
-	var victoryImage = ""
 
 	// Characters Array
 	var characters = [
@@ -200,22 +199,20 @@
 	  }
 
 	 // Ads array
-	 var ads = ['coffee.jpg', 'cola.jpg', 'beggarscanyon.jpg', 'coludcity.jpg', 'dagobah.jpg', 'endor.jpg', 'kessel.jpg', 'moseisley.jpg', 'tatooine.jpg']
+	 var ads = ['coffee.jpg', 'cola.jpg', 'beggarscanyon.jpg', 'cloudcity.jpg', 'dagobah.jpg', 'endor.jpg', 'kessel.jpg', 'moseisley.jpg', 'tatooine.jpg']
 
 	// Change background image
-
 	if (vaderActive == 1) {
 		$('html').css({'background-image': 'url(assets/images/bg/vader3.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});
 	}
-
 	else {
 		$('html').css({'background-image': 'url(assets/images/bg/spacebattle.png)'});
 		$('html').css({'background-size': 'cover'});
 		$('html').css({'min-height': '100%'});	
 	}
-	
+
 	</script>
 </head>
 <body>
@@ -536,7 +533,6 @@ $(document).ready(function(){
 
 	// Calculate Attack
 	function calculateAttack() {
-
 		// Determine random strength of blow
 		if (cheat == 0) {
 			attackStrength = Math.floor(Math.random() * (40-10)) + 10; 
